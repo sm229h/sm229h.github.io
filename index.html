@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرکز تخصصی روانکاوی نوجوان | پژوهش، آموزش و درمان</title>
+    <meta name="description" content="مرکز تخصصی روانکاوی نوجوان - درمان روانکاوانه، آموزش متخصصان و پژوهش در حوزه نوجوانی">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-title">مرکز روانکاوی نوجوان</span>
+                    <span class="logo-subtitle">پژوهش | آموزش | درمان</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link active">خانه</a></li>
+                <li><a href="#about" class="nav-link">درباره ما</a></li>
+                <li><a href="#services" class="nav-link">خدمات</a></li>
+                <li><a href="#team" class="nav-link">تیم متخصصان</a></li>
+                <li><a href="#approach" class="nav-link">رویکرد درمانی</a></li>
+                <li><a href="#publications" class="nav-link">انتشارات</a></li>
+                <li><a href="#contact" class="nav-link">تماس با ما</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="منو">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="hero-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i>
+                    مرکز تخصصی و آکادمیک
+                </div>
+                <h1 class="hero-title">
+                    <span class="hero-title-line">مرکز تخصصی</span>
+                    <span class="hero-title-highlight">روانکاوی نوجوان</span>
+                </h1>
+                <p class="hero-description">
+                    فضایی یکپارچه برای درمان روانکاوانه، آموزش حرفه‌ای و پژوهش پیشرو در حوزه سلامت روان نوجوانان. 
+                    ما باور داریم هر نوجوان حق دارد به عمیق‌ترین لایه‌های روان خود دسترسی پیدا کند.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-arrow-left"></i>
+                        کشف خدمات
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-phone"></i>
+                        رزرو مشاوره
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="15">۰</span>
+                        <span class="stat-suffix">+سال</span>
+                        <span class="stat-label">تجربه تخصصی</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="2000">۰</span>
+                        <span class="stat-suffix">+</span>
+                        <span class="stat-label">مورد درمان موفق</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="500">۰</span>
+                        <span class="stat-suffix">+</span>
+                        <span class="stat-label">متخصص آموزش‌دیده</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-inner">
+                        <div class="card-icon card-icon-1">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>درمان</span>
+                        </div>
+                        <div class="card-icon card-icon-2">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>آموزش</span>
+                        </div>
+                        <div class="card-icon card-icon-3">
+                            <i class="fas fa-microscope"></i>
+                            <span>پژوهش</span>
+                        </div>
+                        <div class="card-center">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#about">
+                <span>بیشتر بدانید</span>
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">درباره مرکز</span>
+                <h2 class="section-title">باور ما به عمق روان نوجوان</h2>
+                <p class="section-desc">
+                    مرکز تخصصی روانکاوی نوجوان با هدف ایجاد فضایی یکپارچه از درمان، آموزش و پژوهش تأسیس شده است
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card about-main">
+                    <div class="about-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>چشم‌انداز ما</h3>
+                    <p>
+                        مرکز تخصصی روانکاوی نوجوان، نهادی آکادمیک و درمانی است که در سه حوزه اصلی درمان روانکاوانه نوجوانان و خانواده‌ها، 
+                        آموزش و تربیت متخصصان در حیطه رواندرمانی نوجوان و پژوهش در گستره و حوزه نوجوانی فعالیت می‌کند. 
+                        هدف ما ایجاد فضایی حرفه‌ای است که هویت آموزشی، پژوهشی و درمانی مرکز به صورت یکپارچه نمایش داده شود.
+                    </p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon about-icon-blue">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>مخاطبان ما</h3>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check-circle"></i> روان‌شناسان و روان‌درمانگران</li>
+                        <li><i class="fas fa-check-circle"></i> دانشجویان روان‌شناسی</li>
+                        <li><i class="fas fa-check-circle"></i> پژوهشگران حوزه نوجوانی</li>
+                        <li><i class="fas fa-check-circle"></i> والدین و نوجوانان</li>
+                        <li><i class="fas fa-check-circle"></i> علاقه‌مندان به روانکاوی</li>
+                    </ul>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon about-icon-green">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>ارزش‌های ما</h3>
+                    <ul class="about-list">
+                        <li><i class="fas fa-check-circle"></i> احترام به حریم خصوصی</li>
+                        <li><i class="fas fa-check-circle"></i> پایبندی به اخلاق حرفه‌ای</li>
+                        <li><i class="fas fa-check-circle"></i> رویکرد علمی و پژوهش‌محور</li>
+                        <li><i class="fas fa-check-circle"></i> مراقبت مبتنی بر همدلی</li>
+                        <li><i class="fas fa-check-circle"></i> بین‌رشته‌ای و یکپارچه</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">خدمات ما</span>
+                <h2 class="section-title">سه ستون اصلی مرکز</h2>
+                <p class="section-desc">
+                    درمان، آموزش و پژوهش سه رکن اساسی فعالیت‌های مرکز تخصصی روانکاوی نوجوان هستند
+                </p>
+            </div>
+            <div class="services-grid">
+                <!-- Service 1: Treatment -->
+                <div class="service-card" data-service="treatment">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <span class="service-number">۰۱</span>
+                    </div>
+                    <h3 class="service-title">درمان روانکاوانه</h3>
+                    <p class="service-desc">
+                        ارائه خدمات درمانی تخصصی برای نوجوانان و خانواده‌ها با استفاده از رویکردهای روانکاوی و رواندرمانی تحلیلی
+                    </p>
+                    <ul class="service-features">
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            روانکاوی فردی نوجوانان
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            رواندرمانی خانوادگی
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            مشاوره والدین
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            درمان اختلالات نوجوانی
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            حمایت بحرانی
+                        </li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        دریافت نوبت مشاوره
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2: Training -->
+                <div class="service-card featured" data-service="training">
+                    <div class="service-badge">پرطرفدار</div>
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="service-number">۰۲</span>
+                    </div>
+                    <h3 class="service-title">آموزش و تربیت متخصصان</h3>
+                    <p class="service-desc">
+                        برنامه‌های آموزشی جامع برای تربیت رواندرمانگران تخصصی نوجوان در سطوح مختلف حرفه‌ای
+                    </p>
+                    <ul class="service-features">
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            دوره‌های تخصصی رواندرمانی نوجوان
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            کارگاه‌های عملی روانکاوی
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            برنامه‌های رزیدنتی
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            نظارت و سوپرویژن بالینی
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            سمینارها و کنفرانس‌ها
+                        </li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        اطلاعات ثبت‌نام
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3: Research -->
+                <div class="service-card" data-service="research">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <span class="service-number">۰۳</span>
+                    </div>
+                    <h3 class="service-title">پژوهش در حوزه نوجوانی</h3>
+                    <p class="service-desc">
+                        انجام پژوهش‌های بنیادی و کاربردی در گستره و حوزه نوجوانی با هدف ارتقای دانش بالینی
+                    </p>
+                    <ul class="service-features">
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            پژوهش‌های بالینی نوجوانان
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            مطالعات رشدی و تحولی
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            بررسی اثربخشی درمان‌ها
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            انتشار مقالات علمی
+                        </li>
+                        <li>
+                            <i class="fas fa-circle"></i>
+                            پروژه‌های بین‌رشته‌ای
+                        </li>
+                    </ul>
+                    <a href="#publications" class="service-link">
+                        مشاهده انتشارات
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="section approach" id="approach">
+        <div class="container">
+            <div class="approach-layout">
+                <div class="approach-content">
+                    <span class="section-tag">رویکرد درمانی</span>
+                    <h2 class="section-title" style="text-align: right;">روانکاوی تحلیلی نوجوانان</h2>
+                    <p class="approach-text">
+                        رویکرد درمانی مرکز مبتنی بر اصول روانکاوی تحلیلی است که با در نظر گرفتن ویژگی‌های رشدی نوجوانان 
+                        و پویایی‌های خانوادگی، فرآیند درمانی مناسبی را ارائه می‌دهد.
+                    </p>
+                    <div class="approach-principles">
+                        <div class="principle">
+                            <div class="principle-number">۱</div>
+                            <div class="principle-content">
+                                <h4>کاوش ناخودآگاه</h4>
+                                <p>بررسی عمیق احساسات، افکار و تعارضات پنهان نوجوانان از طریق تکنیک‌های روانکاوی</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-number">۲</div>
+                            <div class="principle-content">
+                                <h4>رابطه درمانی امن</h4>
+                                <p>ایجاد فضای امان‌بخش برای بیان آزادانه تجربیات درونی و احساسات عمیق</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-number">۳</div>
+                            <div class="principle-content">
+                                <h4>شمول خانواده</h4>
+                                <p>مشارکت فعال خانواده در فرآیند درمانی برای بهبود پویایی‌های خانوادگی</p>
+                            </div>
+                        </div>
+                        <div class="principle">
+                            <div class="principle-number">۴</div>
+                            <div class="principle-content">
+                                <h4>رشد تحولی</h4>
+                                <p>پشتیبانی از فرآیند طبیعی رشد و تحول شخصیت نوجوان در مسیر بلوغ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="approach-visual">
+                    <div class="approach-image">
+                        <div class="approach-card-stack">
+                            <div class="approach-float-card card-a">
+                                <i class="fas fa-comments"></i>
+                                <span>گفتار درمانی</span>
+                            </div>
+                            <div class="approach-float-card card-b">
+                                <i class="fas fa-dream"></i>
+                                <span>تعبیر رؤیا</span>
+                            </div>
+                            <div class="approach-float-card card-c">
+                                <i class="fas fa-puzzle-piece"></i>
+                                <span>بازی‌درمانی</span>
+                            </div>
+                            <div class="approach-float-card card-d">
+                                <i class="fas fa-pen-nib"></i>
+                                <span>نوشتن خلاق</span>
+                            </div>
+                            <div class="approach-center-icon">
+                                <i class="fas fa-atom"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">تیم متخصصان</span>
+                <h2 class="section-title">درمانگران و پژوهشگران ما</h2>
+                <p class="section-desc">
+                    تیم ما متشکل از متخصصان با تجربه و برجسته در حوزه روانکاوی و رواندرمانی نوجوان است
+                </p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <h4 class="team-name">دکتر سارا احمدی</h4>
+                    <span class="team-role">مدیر مرکز | روانپزشک نوجوان</span>
+                    <p class="team-bio">
+                        دکترای تخصصی روانپزشکی از دانشگاه تهران، بیش از ۱۸ سال تجربه بالینی در درمان اختلالات نوجوانان
+                    </p>
+                    <div class="team-specialties">
+                        <span class="specialty-tag">روانکاوی</span>
+                        <span class="specialty-tag">روانپزشکی</span>
+                        <span class="specialty-tag">نوجوانان</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <h4 class="team-name">دکتر علی رضایی</h4>
+                    <span class="team-role">رواندرمانگر تحلیلی</span>
+                    <p class="team-bio">
+                        فارغ‌التحصیل رواندرمانی تحلیلی از موسسه روانکاوی، متخصص در رواندرمانی نوجوانان و خانواده
+                    </p>
+                    <div class="team-specialties">
+                        <span class="specialty-tag">رواندرمانی تحلیلی</span>
+                        <span class="specialty-tag">خانواده</span>
+                        <span class="specialty-tag">آموزش</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <h4 class="team-name">دکتر مریم کریمی</h4>
+                    <span class="team-role">پژوهشگر ارشد</span>
+                    <p class="team-bio">
+                        دکترای روانشناسی بالینی، مدیر بخش پژوهش مرکز، متخصص در مطالعات رشدی و تحولی نوجوانان
+                    </p>
+                    <div class="team-specialties">
+                        <span class="specialty-tag">پژوهش</span>
+                        <span class="specialty-tag">روشد تحولی</span>
+                        <span class="specialty-tag">آمار</span>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                    </div>
+                    <h4 class="team-name">دکتر حسن محبی</h4>
+                    <span class="team-role">روانشناس بالینی</span>
+                    <p class="team-bio">
+                        متخصص در رواندرمانی شناختی-تحلیلی نوجوانان با تمرکز بر اختلالات اضطرابی و افسردگی
+                    </p>
+                    <div class="team-specialties">
+                        <span class="specialty-tag">شناختی-تحلیلی</span>
+                        <span class="specialty-tag">اضطراب</span>
+                        <span class="specialty-tag">افسردگی</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section class="section publications" id="publications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">انتشارات و پژوهش‌ها</span>
+                <h2 class="section-title">آخرین دستاوردهای علمی</h2>
+                <p class="section-desc">
+                    مقالات، کتاب‌ها و گزارش‌های پژوهشی منتشرشده توسط پژوهشگران مرکز
+                </p>
+            </div>
+            <div class="publications-grid">
+                <div class="pub-card">
+                    <div class="pub-type">مقاله علمی</div>
+                    <h4 class="pub-title">بررسی اثربخشی رواندرمانی تحلیلی در درمان افسردگی نوجوانان</h4>
+                    <p class="pub-authors">
+                        <i class="fas fa-users"></i>
+                        کریمی، م.، احمدی، س.، و رضایی، ع.
+                    </p>
+                    <p class="pub-journal">
+                        <i class="fas fa-book-open"></i>
+                        مجله روانپزشکی و روانشناسی بالینی ایران، ۱۴۰۴
+                    </p>
+                    <a href="#" class="pub-link">
+                        مطالعه بیشتر
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="pub-card">
+                    <div class="pub-type">کتاب</div>
+                    <h4 class="pub-title">راهنمای جامع رواندرمانی نوجوان: از نظریه تا عمل</h4>
+                    <p class="pub-authors">
+                        <i class="fas fa-user"></i>
+                        احمدی، س. (تألیف)
+                    </p>
+                    <p class="pub-journal">
+                        <i class="fas fa-building"></i>
+                        انتشارات دانشگاه تهران، ۱۴۰۳
+                    </p>
+                    <a href="#" class="pub-link">
+                        مطالعه بیشتر
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="pub-card">
+                    <div class="pub-type">مقاله علمی</div>
+                    <h4 class="pub-title">پویایی‌های خانوادگی و نقش آن در سلامت روان نوجوانان: یک مطالعه تحلیلی</h4>
+                    <p class="pub-authors">
+                        <i class="fas fa-users"></i>
+                        محبی، ح. و رضایی، ع.
+                    </p>
+                    <p class="pub-journal">
+                        <i class="fas fa-book-open"></i>
+                        مجله خانواده و مشاوره، ۱۴۰۴
+                    </p>
+                    <a href="#" class="pub-link">
+                        مطالعه بیشتر
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <div class="pub-card">
+                    <div class="pub-type">گزارش پژوهشی</div>
+                    <h4 class="pub-title">وضعیت سلامت روان نوجوانان ایرانی: گزارش ملی ۱۴۰۴</h4>
+                    <p class="pub-authors">
+                        <i class="fas fa-building"></i>
+                        مرکز تخصصی روانکاوی نوجوان
+                    </p>
+                    <p class="pub-journal">
+                        <i class="fas fa-calendar"></i>
+                        گزارش سالانه مرکز، ۱۴۰۴
+                    </p>
+                    <a href="#" class="pub-link">
+                        مطالعه بیشتر
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / Process -->
+    <section class="section process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">فرآیند درمان</span>
+                <h2 class="section-title">مسیر بهبودی شما</h2>
+                <p class="section-desc">
+                    مراحل دریافت خدمات درمانی در مرکز تخصصی روانکاوی نوجوان
+                </p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">۱</div>
+                    <div class="step-content">
+                        <h4>تماس اولیه</h4>
+                        <p>ارتباط با مرکز از طریق تلفن یا فرم آنلاین و دریافت مشاوره اولیه</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">۲</div>
+                    <div class="step-content">
+                        <h4>ارزیابی تخصصی</h4>
+                        <p>جلسه ارزیابی اولیه با متخصص برای شناخت دقیق وضعیت نوجوان و خانواده</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">۳</div>
+                    <div class="step-content">
+                        <h4>برنامه درمانی</h4>
+                        <p>تدوین برنامه درمانی اختصاصی بر اساس نتایج ارزیابی و نیازهای نوجوان</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">۴</div>
+                    <div class="step-content">
+                        <h4>جلسات درمانی</h4>
+                        <p>برگزاری جلسات منظم روانکاوی و درمان تخصصی در فضای امن و حرفه‌ای</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">۵</div>
+                    <div class="step-content">
+                        <h4>پیگیری و ارزشیابی</h4>
+                        <p>ارزیابی مستمر پیشرفت و اعمال تغییرات لازم در برنامه درمانی</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">تماس با ما</span>
+                <h2 class="section-title">آماده پاسخگویی هستیم</h2>
+                <p class="section-desc">
+                    برای دریافت نوبت مشاوره، اطلاعات ثبت‌نام دوره‌ها یا هرگونه سؤال با ما در تماس باشید
+                </p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>تلفن تماس</h4>
+                            <p>۰۲۱-۱۲۳۴۵۶۷۸</p>
+                            <p>۰۲۱-۸۷۶۵۴۳۲۱</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>ایمیل</h4>
+                            <p>info@adolescent-psychoanalysis.ir</p>
+                            <p>appointment@adolescent-psychoanalysis.ir</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>آدرس</h4>
+                            <p>تهران، خیابان ولیعصر، نبش کوچه گلستان، طبقه سوم</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>ساعات کاری</h4>
+                            <p>شنبه تا چهارشنبه: ۹ صبح الی ۷ شب</p>
+                            <p>پنجشنبه: ۹ صبح الی ۱ ظهر</p>
+                        </div>
+                    </div>
+                    <div class="contact-social">
+                        <a href="#" class="social-link" aria-label="اینستاگرام">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="تلگرام">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="واتساپ">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="لینکدین">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm">
+                        <h3 class="form-title">درخواست نوبت مشاوره</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">نام و نام خانوادگی</label>
+                                <input type="text" id="name" name="name" placeholder="نام کامل خود را وارد کنید" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">شماره تماس</label>
+                                <input type="tel" id="phone" name="phone" placeholder="شماره تلفن همراه" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">ایمیل</label>
+                            <input type="email" id="email" name="email" placeholder="آدرس ایمیل شما">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">نوع خدمات مورد نظر</label>
+                            <select id="service" name="service" required>
+                                <option value="">انتخاب کنید...</option>
+                                <option value="treatment">درمان روانکاوانه نوجوان</option>
+                                <option value="family">رواندرمانی خانوادگی</option>
+                                <option value="parenting">مشاوره والدین</option>
+                                <option value="training">ثبت‌نام دوره آموزشی</option>
+                                <option value="research">همکاری پژوهشی</option>
+                                <option value="other">سایر</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">توضیحات</label>
+                            <textarea id="message" name="message" rows="4" placeholder="لطفاً وضعیت یا سؤال خود را شرح دهید..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i>
+                            ارسال درخواست
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-about">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <span>مرکز روانکاوی نوجوان</span>
+                    </div>
+                    <p>
+                        مرکز تخصصی روانکاوی نوجوان، نهادی آکادمیک و درمانی که در سه حوزه درمان، آموزش و پژوهش 
+                        در حوزه نوجوانی فعالیت می‌کند.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>دسترسی سریع</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">درباره ما</a></li>
+                        <li><a href="#services">خدمات</a></li>
+                        <li><a href="#team">تیم متخصصان</a></li>
+                        <li><a href="#approach">رویکرد درمانی</a></li>
+                        <li><a href="#publications">انتشارات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>خدمات</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">درمان روانکاوانه</a></li>
+                        <li><a href="#services">رواندرمانی خانوادگی</a></li>
+                        <li><a href="#services">مشاوره والدین</a></li>
+                        <li><a href="#services">آموزش متخصصان</a></li>
+                        <li><a href="#services">پژوهش بالینی</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>با ما در تماس باشید</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>۰۲۱-۱۲۳۴۵۶۷۸</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@adolescent-psychoanalysis.ir</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>تهران، خیابان ولیعصر</span>
+                        </li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© ۱۴۰۵ مرکز تخصصی روانکاوی نوجوان. تمامی حقوق محفوظ است.</p>
+                <p>طراحی و توسعه با <i class="fas fa-heart"></i> برای سلامت روان نوجوانان</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="بازگشت به بالا">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
