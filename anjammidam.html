@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انجام میدم | مرکز تخصصی روانکاوی نوجوان</title>
+    <meta name="description" content="سایت انجام میدم - مرجع تخصصی خدمات روانشناسی و مشاوره آنلاین">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #0f1923 0%, #1a2d3d 50%, #0f1923 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            direction: rtl;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 900px;
+            padding: 40px 24px;
+            text-align: center;
+            position: relative;
+        }
+        .bg-shapes { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+        .bg-shapes span {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.04;
+        }
+        .bg-shapes span:nth-child(1) { width: 500px; height: 500px; background: #4a90d9; top: -100px; left: -100px; }
+        .bg-shapes span:nth-child(2) { width: 350px; height: 350px; background: #6bb3f0; bottom: -50px; right: -50px; }
+        .bg-shapes span:nth-child(3) { width: 200px; height: 200px; background: #d4a373; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: 0.3s;
+            margin-bottom: 40px;
+        }
+        .back-link:hover { color: #fff; }
+
+        .banner {
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 32px;
+            padding: 64px 48px;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+            transition: 0.4s;
+        }
+        .banner:hover {
+            border-color: rgba(74, 144, 217, 0.4);
+            box-shadow: 0 32px 100px rgba(74, 144, 217, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(74, 144, 217, 0.15);
+            border: 1px solid rgba(74, 144, 217, 0.25);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6bb3f0;
+            margin-bottom: 28px;
+        }
+        .badge i { font-size: 0.8rem; }
+
+        .banner-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 32px;
+            background: linear-gradient(135deg, #4a90d9, #6bb3f0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #fff;
+            box-shadow: 0 12px 40px rgba(74, 144, 217, 0.3);
+        }
+
+        .banner h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, #8fc4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .banner p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.9;
+            max-width: 550px;
+            margin: 0 auto 36px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 48px;
+            background: linear-gradient(135deg, #4a90d9, #6bb3f0);
+            color: #fff;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 30px rgba(74, 144, 217, 0.35);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 45px rgba(74, 144, 217, 0.5);
+        }
+        .cta-button i { font-size: 1rem; }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .feature-item {
+            text-align: center;
+            padding: 16px;
+        }
+        .feature-item i {
+            font-size: 24px;
+            color: #6bb3f0;
+            margin-bottom: 12px;
+        }
+        .feature-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .feature-item p {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.5);
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .banner { padding: 40px 24px; }
+            .banner h1 { font-size: 2rem; }
+            .features { grid-template-columns: 1fr; gap: 8px; }
+            .banner p { font-size: 0.95rem; }
+        }
+        @media (max-width: 480px) {
+            .banner h1 { font-size: 1.6rem; }
+            .cta-button { padding: 14px 32px; font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-shapes">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-right"></i>
+            بازگشت به سایت اصلی
+        </a>
+
+        <div class="banner">
+            <div class="badge">
+                <i class="fas fa-star"></i>
+                معرفی سامانه همکار
+            </div>
+
+            <div class="banner-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+
+            <h1>انجام میدم</h1>
+            <p>
+                سامانه جامع ارائه خدمات تخصصی روانشناسی و مشاوره آنلاین. 
+                با متخصصان مجرب در هر کجا که هستید، در ارتباط باشید.
+            </p>
+
+            <a href="https://www.anjammidam.com/" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <span>ورود به سایت انجام میدم</span>
+                <i class="fas fa-external-link-alt"></i>
+            </a>
+
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-user-md"></i>
+                    <h4>متخصصان مجرب</h4>
+                    <p>ارتباط با بهترین روانشناسان کشور</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <h4>نوبت‌دهی آنلاین</h4>
+                    <p>رزرو آسان جلسات مشاوره</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-lock"></i>
+                    <h4>حریم خصوصی</h4>
+                    <p>امنیت کامل اطلاعات شما</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
