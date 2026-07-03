@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاوره تحصیلی پریمیوم - مسیر موفقیت شما</title>
+    <meta name="description" content="خدمات مشاوره تحصیلی حرفه‌ای با بیش از ۱۰ سال تجربه. برنامه‌ریزی تحصیلی، مشاوره کنکور و پشتیبانی مداوم.">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #1e3a8a;
+            --primary-dark: #1e40af;
+            --secondary: #f59e0b;
+            --secondary-dark: #d97706;
+            --accent: #dc2626;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --light-bg: #f3f4f6;
+            --border: #e5e7eb;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.15);
+            --transition: all 0.3s ease;
+        }
+        body { 
+            font-family: 'Vazirmatn', sans-serif; 
+            direction: rtl; 
+            background: var(--light-bg); 
+            color: var(--text-dark); 
+            line-height: 1.8; 
+            overflow-x: hidden;
+        }
+        h1,h2,h3,h4,h5,h6 { font-weight: 700; line-height: 1.4; color: var(--primary); }
+        h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+        h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+        h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
+        p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        
+        /* Top Bar */
+        .top-bar {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+        }
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar-right {
+            display: flex;
+            gap: 2rem;
+        }
+        .top-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .top-bar-left {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .top-bar a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .top-bar a:hover { color: var(--secondary); }
+        
+        /* Header */
+        .header { 
+            background: var(--white); 
+            box-shadow: var(--shadow); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+        }
+        .nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 1rem 0;
+        }
+        .logo { 
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo-icon { 
+            width: 60px; 
+            height: 60px; 
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
+            border-radius: 12px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--white); 
+            font-size: 2rem;
+            box-shadow: var(--shadow);
+        }
+        .logo-text h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--primary);
+        }
+        .logo-text span {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        .nav-menu { 
+            display: flex; 
+            list-style: none; 
+            gap: 0.5rem; 
+            align-items: center;
+        }
+        .nav-menu a { 
+            color: var(--text-dark); 
+            text-decoration: none; 
+            font-weight: 600; 
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            display: block;
+        }
+        .nav-menu a:hover { 
+            background: var(--light-bg);
+            color: var(--primary);
+        }
+        .nav-menu a.active { 
+            background: var(--primary);
+            color: var(--white);
+        }
+        .nav-cta { 
+            background: var(--secondary); 
+            color: var(--white) !important;
+        }
+        .nav-cta:hover { 
+            background: var(--secondary-dark);
+        }
+        .mobile-toggle { 
+            display: none; 
+            flex-direction: column; 
+            gap: 5px; 
+            cursor: pointer; 
+            padding: 10px;
+        }
+        .mobile-toggle span { 
+            width: 25px; 
+            height: 3px; 
+            background: var(--primary); 
+            border-radius: 3px;
+        }
+        
+        /* Countdown Section */
+        .countdown-section {
+            background: linear-gradient(135deg, var(--accent), #b91c1c);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        .countdown-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .countdown-item {
+            background: rgba(255,255,255,0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            line-height: 1;
+        }
+        .countdown-label {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Hero */
+        .hero { 
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
+            color: var(--white); 
+            padding: 4rem 0;
+            position: relative;
+        }
+        .hero-content { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 3rem; 
+            align-items: center;
+        }
+        .hero-text h1 { 
+            color: var(--white); 
+            margin-bottom: 1.5rem;
+        }
+        .hero-text p { 
+            color: rgba(255,255,255,0.9); 
+            font-size: 1.1rem; 
+            margin-bottom: 2rem;
+        }
+        .hero-buttons { 
+            display: flex; 
+            gap: 1rem; 
+            flex-wrap: wrap;
+        }
+        .hero-image {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .hero-image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+        
+        /* Buttons */
+        .btn { 
+            display: inline-block; 
+            padding: 0.875rem 2rem; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            text-decoration: none; 
+            transition: var(--transition); 
+            cursor: pointer; 
+            border: none; 
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        .btn-primary { 
+            background: var(--secondary); 
+            color: var(--white);
+            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);
+        }
+        .btn-primary:hover { 
+            background: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(245, 158, 11, 0.4);
+        }
+        .btn-secondary { 
+            background: var(--white); 
+            color: var(--primary);
+            border: 2px solid var(--white);
+        }
+        .btn-secondary:hover { 
+            background: transparent; 
+            color: var(--white);
+        }
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+        }
+        .btn-accent:hover {
+            background: #b91c1c;
+        }
+        
+        /* Section */
+        .section { padding: 4rem 0; }
+        .section-header { 
+            text-align: center; 
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+            width: 100%;
+        }
+        .section-header h2 { 
+            margin-bottom: 0.75rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        /* Services */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); 
+            gap: 1.5rem;
+        }
+        .service-card { 
+            background: var(--white); 
+            border-radius: 12px; 
+            overflow: hidden;
+            box-shadow: var(--shadow); 
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+        .service-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: var(--shadow-lg);
+        }
+        .service-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .service-header h3 {
+            color: var(--white);
+            margin: 0;
+        }
+        .service-body {
+            padding: 1.5rem;
+        }
+        .service-body p {
+            margin-bottom: 1.5rem;
+        }
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .service-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .service-features li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        .service-card .btn {
+            width: 100%;
+        }
+        
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--white);
+            padding: 3rem 0;
+            box-shadow: var(--shadow);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        .stat-item p {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        
+        /* Why Us */
+        .why-us { background: var(--white); }
+        .features-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); 
+            gap: 1.5rem;
+        }
+        .feature-item { 
+            background: var(--light-bg);
+            padding: 2rem; 
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+        .feature-item:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+        .feature-icon { 
+            width: 70px; 
+            height: 70px; 
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 1rem; 
+            font-size: 2rem; 
+            color: var(--white);
+        }
+        
+        /* Challenge Section */
+        .challenge-section {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            padding: 4rem 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .challenge-section h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        .challenge-section p {
+            color: rgba(255,255,255,0.95);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        .challenge-box {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .challenge-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            text-align: right;
+        }
+        .challenge-feature {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .challenge-feature-icon {
+            font-size: 2rem;
+        }
+        
+        /* Testimonials */
+        .testimonials { background: var(--light-bg); }
+        .testimonials-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); 
+            gap: 1.5rem;
+        }
+        .testimonial-card { 
+            background: var(--white); 
+            padding: 2rem; 
+            border-radius: 12px; 
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+        }
+        .testimonial-text { 
+            font-style: italic; 
+            margin-bottom: 1.5rem; 
+            color: var(--text-dark);
+            line-height: 2;
+        }
+        .testimonial-author { 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .author-avatar { 
+            width: 50px; 
+            height: 50px; 
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--white); 
+            font-weight: 700;
+        }
+        .author-info h4 { 
+            font-size: 1rem; 
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+        }
+        .author-info span { 
+            font-size: 0.875rem; 
+            color: var(--text-light);
+        }
+        
+        /* CTA */
+        .cta-section { 
+            background: var(--primary);
+            color: var(--white); 
+            text-align: center; 
+            padding: 3rem 0;
+        }
+        .cta-section h2 { 
+            color: var(--white); 
+            margin-bottom: 1rem;
+        }
+        .cta-section p { 
+            color: rgba(255,255,255,0.9); 
+            margin-bottom: 2rem;
+        }
+        
+        /* Blog */
+        .blog-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); 
+            gap: 1.5rem;
+        }
+        .blog-card { 
+            background: var(--white); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: var(--shadow); 
+            transition: var(--transition);
+        }
+        .blog-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: var(--shadow-lg);
+        }
+        .blog-image { 
+            width: 100%; 
+            height: 180px; 
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: var(--white); 
+            font-size: 3rem;
+        }
+        .blog-content { padding: 1.5rem; }
+        .blog-meta { 
+            display: flex; 
+            gap: 1rem; 
+            margin-bottom: 1rem; 
+            font-size: 0.8rem; 
+            color: var(--text-light);
+        }
+        .blog-card h3 { 
+            margin-bottom: 1rem; 
+            font-size: 1.125rem;
+            line-height: 1.6;
+        }
+        
+        /* FAQ */
+        .faq-list { max-width: 900px; margin: 0 auto; }
+        .faq-item { 
+            background: var(--white); 
+            border: 1px solid var(--border); 
+            border-radius: 8px; 
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .faq-question { 
+            padding: 1.25rem; 
+            cursor: pointer; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            font-weight: 700; 
+            color: var(--primary);
+            background: var(--light-bg);
+        }
+        .faq-icon { 
+            width: 30px; 
+            height: 30px; 
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: var(--transition);
+            flex-shrink: 0;
+            font-size: 1.25rem;
+        }
+        .faq-item.active .faq-icon { 
+            transform: rotate(45deg);
+        }
+        .faq-answer { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease;
+        }
+        .faq-answer-content { 
+            padding: 1.25rem;
+            border-top: 1px solid var(--border);
+        }
+        .faq-item.active .faq-answer { 
+            max-height: 500px;
+        }
+        
+        /* Form */
+        .contact-section {
+            background: var(--white);
+        }
+        .contact-form { 
+            max-width: 700px; 
+            margin: 0 auto; 
+            background: var(--light-bg); 
+            padding: 2.5rem; 
+            border-radius: 12px;
+            border: 2px solid var(--border);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-weight: 600; 
+            color: var(--primary);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea { 
+            width: 100%; 
+            padding: 0.875rem; 
+            border: 2px solid var(--border); 
+            border-radius: 8px; 
+            font-family: inherit; 
+            font-size: 0.95rem; 
+            transition: var(--transition);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { 
+            outline: none; 
+            border-color: var(--primary);
+        }
+        .form-group textarea { 
+            resize: vertical; 
+            min-height: 100px;
+        }
+        
+        /* Footer */
+        .footer { 
+            background: var(--primary); 
+            color: var(--white); 
+            padding: 3rem 0 1rem;
+        }
+        .footer-content { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); 
+            gap: 2rem; 
+            margin-bottom: 2rem;
+        }
+        .footer-section h3 { 
+            color: var(--secondary);
+            margin-bottom: 1.25rem;
+            font-size: 1.25rem;
+        }
+        .footer-section p,
+        .footer-section a { 
+            color: rgba(255,255,255,0.85); 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 0.75rem;
+            transition: var(--transition);
+        }
+        .footer-section a:hover { 
+            color: var(--secondary);
+            padding-right: 5px;
+        }
+        .footer-bottom { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* Sticky CTA */
+        .sticky-cta { 
+            display: none; 
+            position: fixed; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            background: var(--white); 
+            padding: 1rem; 
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1); 
+            z-index: 999;
+        }
+        .sticky-cta .btn { width: 100%; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar-right { display: none; }
+            .nav-menu { 
+                position: fixed; 
+                top: 0;
+                right: -100%; 
+                width: 80%;
+                max-width: 300px;
+                height: 100vh; 
+                background: var(--white); 
+                flex-direction: column; 
+                padding: 6rem 1.5rem 1.5rem;
+                transition: var(--transition);
+                box-shadow: var(--shadow-lg);
+            }
+            .nav-menu.active { right: 0; }
+            .mobile-toggle { display: flex; }
+            .hero-content { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .countdown-timer { gap: 0.75rem; }
+            .countdown-item { padding: 0.75rem 1rem; }
+            .countdown-number { font-size: 1.75rem; }
+            .sticky-cta { display: block; }
+            .section { padding: 3rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="top-bar-right">
+                    <div class="top-bar-item">📞 ۰۲-۱۲۳۴۵۶۷۸</div>
+                    <div class="top-bar-item">📱 ۹۱۲-۱۲۳-۴۵۶۷</div>
+                </div>
+                <div class="top-bar-left">
+                    <a href="#">درباره ما</a>
+                    <a href="#">تماس با ما</a>
+                    <a href="#">ورود / ثبت‌نام</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <div class="logo-icon">🎓</div>
+                <div class="logo-text">
+                    <h1>مشاوره تحصیلی</h1>
+                    <span>مسیر موفقیت شما</span>
+                </div>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">صفحه اصلی</a></li>
+                <li><a href="#services">خدمات</a></li>
+                <li><a href="#challenge">چالش رایگان</a></li>
+                <li><a href="#about">درباره ما</a></li>
+                <li><a href="#blog">مقالات</a></li>
+                <li><a href="#faq">سوالات متداول</a></li>
+                <li><a href="#contact" class="nav-cta">مشاوره رایگان</a></li>
+            </ul>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Countdown Section -->
+    <section class="countdown-section">
+        <div class="container">
+            <h2 class="countdown-title">⏰ شمارش معکوس کنکور ۱۴۰۵</h2>
+            <div class="countdown-timer" id="countdownTimer">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">۰</span>
+                    <div class="countdown-label">روز</div>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">۰</span>
+                    <div class="countdown-label">ساعت</div>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">۰</span>
+                    <div class="countdown-label">دقیقه</div>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">۰</span>
+                    <div class="countdown-label">ثانیه</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>با مشاوره تخصصی، رتبه برتر کنکور شو!</h1>
+                    <p>بیش از ۱۰ سال تجربه درخشان در مشاوره تحصیلی و برنامه‌ریزی کنکور. همراه شما از امروز تا روز کنکور با برنامه‌ای شخصی‌سازی شده و پشتیبانی مداوم.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">دریافت مشاوره رایگان</a>
+                        <a href="#challenge" class="btn btn-secondary">چالش ۵ روزه رایگان</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-placeholder">📚</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>+۲۵۰۰</h3>
+                    <p>دانش‌آموز موفق</p>
+                </div>
+                <div class="stat-item">
+                    <h3>+۱۰</h3>
+                    <p>سال تجربه</p>
+                </div>
+                <div class="stat-item">
+                    <h3>۹۸٪</h3>
+                    <p>رضایت مراجعین</p>
+                </div>
+                <div class="stat-item">
+                    <h3>+۵۰</h3>
+                    <p>رتبه برتر</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>خدمات ما</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">📋</div>
+                        <h3>برنامه‌ریزی تحصیلی</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>برنامه مطالعاتی کاملاً شخصی‌سازی شده بر اساس سطح، هدف و زمان شما</p>
+                        <ul class="service-features">
+                            <li>برنامه هفتگی و روزانه</li>
+                            <li>تنظیم بر اساس شرایط شما</li>
+                            <li>پیگیری مستمر اجرا</li>
+                            <li>اصلاح و بهینه‌سازی</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">شروع کنید</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">💡</div>
+                        <h3>مشاوره تخصصی کنکور</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>مشاوره فردی با متخصصین مجرب برای رسیدن به بهترین نتیجه</p>
+                        <ul class="service-features">
+                            <li>مشاوره انتخاب رشته</li>
+                            <li>تحلیل کارنامه</li>
+                            <li>استراتژی مطالعه</li>
+                            <li>رفع اشکال درسی</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">شروع کنید</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🎯</div>
+                        <h3>پشتیبانی ۲۴/۷</h3>
+                    </div>
+                    <div class="service-body">
+                        <p>همیشه در کنار شما هستیم. هر سوالی دارید، پاسخ می‌دهیم</p>
+                        <ul class="service-features">
+                            <li>پشتیبانی تلفنی</li>
+                            <li>پاسگویی در پیام‌رسان</li>
+                            <li>جلسات آنلاین</li>
+                            <li>انگیزش و پیگیری</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">شروع کنید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge Section -->
+    <section class="challenge-section" id="challenge">
+        <div class="container">
+            <h2>🎁 چالش ۵ روزه رایگان</h2>
+            <p>همین حالا در چالش ۵ روزه رایگان ما شرکت کنید و با روش‌های برنامه‌ریزی صحیح آشنا شوید</p>
+            <div class="challenge-box">
+                <div class="challenge-features">
+                    <div class="challenge-feature">
+                        <span class="challenge-feature-icon">✓</span>
+                        <div>
+                            <strong>برنامه مطالعاتی شخصی</strong>
+                            <p style="margin: 0; font-size: 0.9rem;">برای ۵ روز متوالی</p>
+                        </div>
+                    </div>
+                    <div class="challenge-feature">
+                        <span class="challenge-feature-icon">✓</span>
+                        <div>
+                            <strong>مشاوره انگیزشی</strong>
+                            <p style="margin: 0; font-size: 0.9rem;">روزانه توسط مشاور</p>
+                        </div>
+                    </div>
+                    <div class="challenge-feature">
+                        <span class="challenge-feature-icon">✓</span>
+                        <div>
+                            <strong>گروه پشتیبانی</strong>
+                            <p style="margin: 0; font-size: 0.9rem;">همراه با خانواده</p>
+                        </div>
+                    </div>
+                    <div class="challenge-feature">
+                        <span class="challenge-feature-icon">✓</span>
+                        <div>
+                            <strong>نظارت مستمر</strong>
+                            <p style="margin: 0; font-size: 0.9rem;">بر روی اجرای برنامه</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#contact" class="btn btn-accent" style="font-size: 1.1rem; padding: 1rem 3rem;">شرکت رایگان در چالش</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="section why-us" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>چرا ما؟</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3>تیم متخصص</h3>
+                    <p>مشاوران با تجربه و دارای مدارک معتبر از دانشگاه‌های برتر کشور</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3>برنامه شخصی</h3>
+                    <p>هر برنامه بر اساس نیازها و شرایط منحصر به فرد شما طراحی می‌شود</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3>نتایج اثبات شده</h3>
+                    <p>هزاران دانش‌آموز موفق با رتبه‌های برتر در کنکور سراسری</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <h3>پشتیبانی دائمی</h3>
+                    <p>همیشه در دسترس برای پاسخگویی به سوالات و رفع مشکلات</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>نظرات دانش‌آموزان</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"با کمک مشاوران این مجموعه، توانستم از رتبه ۱۵۰۰۰ به رتبه ۱۵۶ برسم. برنامه‌ریزی دقیق و پیگیری مداوم واقعاً معجزه کرد. ممنونم از تیم عالی‌تون."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">س</div>
+                        <div class="author-info">
+                            <h4>سارا احمدی</h4>
+                            <span>رتبه ۱۵۶ کنکور تجربی ۱۴۰۴</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"پسرم همیشه در درس ریاضی مشکل داشت. بعد از سه ماه کار با این تیم، نمراتش از ۱۲ به ۱۹ رسید. واقعاً روش‌شون متفاوته."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">م</div>
+                        <div class="author-info">
+                            <h4>مریم رضایی</h4>
+                            <span>والد دانش‌آموز پایه یازدهم</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"چالش ۵ روزه رایگان نقطه عطفی بود. فهمیدم چطور باید درست برنامه‌ریزی کنم. الان با انگیزه بیشتری دارم درس می‌خونم."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ع</div>
+                        <div class="author-info">
+                            <h4>علی محمدی</h4>
+                            <span>دانش‌آموز پایه دوازدهم</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section" id="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2>آخرین مقالات</h2>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">📖</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>۱۵ تیر ۱۴۰۵</span>
+                            <span>•</span>
+                            <span>۵ دقیقه</span>
+                        </div>
+                        <h3>۱۰ روش مؤثر برای افزایش تمرکز در مطالعه</h3>
+                        <a href="#" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">ادامه مطلب</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">🎯</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>۱۲ تیر ۱۴۰۵</span>
+                            <span>•</span>
+                            <span>۷ دقیقه</span>
+                        </div>
+                        <h3>راهنمای کامل انتخاب رشته مناسب</h3>
+                        <a href="#" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">ادامه مطلب</a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-image">⏰</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>۱۰ تیر ۱۴۵</span>
+                            <span>•</span>
+                            <span>۶ دقیقه</span>
+                        </div>
+                        <h3>مدیریت زمان: کلید موفقیت در کنکور</h3>
+                        <a href="#" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">ادامه مطلب</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq" style="background: var(--light-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2>سوالات متداول</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هزینه مشاوره چقدر است؟</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>هزینه مشاوره بر اساس نوع خدمات و مدت زمان همکاری متفاوت است. ما پکیج‌های مختلفی داریم. برای اطلاع از قیمت‌ها، با ما تماس بگیرید تا مشاوره رایگان اولیه انجام شود.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>جلسات مشاوره به چه صورت برگزار می‌شود؟</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>جلسات می‌تواند به صورت حضوری، آنلاین، یا تلفنی برگزار شود. شما می‌توانید روشی را انتخاب کنید که برایتان راحت‌تر است.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>آیا برای همه پایه‌های تحصیلی مشاوره دارید؟</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>بله، ما برای تمامی پایه‌ها از هفتم تا کنکور و حتی دانشگاه خدمات ارائه می‌دهیم.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>چقدر طول می‌کشد تا نتیجه ببینیم؟</span>
+                        <div class="faq-icon">+</div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>معمولاً از هفته‌های اول تغییرات مثبت را مشاهده خواهید کرد. برای نتایج پایدار، ۲ تا ۳ ماه همکاری منظم نیاز است.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>دریافت مشاوره رایگان</h2>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">نام و نام خانوادگی *</label>
+                        <input type="text" id="name" name="name" required placeholder="نام کامل خود را وارد کنید">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">شماره تماس *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="۰۹۱۲۳۴۵۶۷۸۹">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="grade">پایه تحصیلی</label>
+                        <select id="grade" name="grade">
+                            <option value="">انتخاب کنید</option>
+                            <option value="7">پایه هفتم</option>
+                            <option value="8">پایه هشتم</option>
+                            <option value="9">پایه نهم</option>
+                            <option value="10">پایه دهم</option>
+                            <option value="11">پایه یازدهم</option>
+                            <option value="12">پایه دوازدهم</option>
+                            <option value="konkur">پشت کنکوری</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="field">رشته تحصیلی</label>
+                        <select id="field" name="field">
+                            <option value="">انتخاب کنید</option>
+                            <option value="riazi">ریاضی</option>
+                            <option value="tajrobi">تجربی</option>
+                            <option value="ensani">انسانی</option>
+                            <option value="honar">هنر</option>
+                            <option value="zaban">زبان</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">توضیحات</label>
+                    <textarea id="message" name="message" placeholder="اگر سوال یا توضیح خاصی دارید..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">ارسال درخواست مشاوره</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>همین امروز شروع کنید!</h2>
+            <p>برای دریافت مشاوره رایگان و شروع مسیر موفقیت، فرم بالا را پر کنید یا با ما تماس بگیرید</p>
+            <a href="tel:09121234567" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 3rem;">📞 تماس فوری</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>درباره ما</h3>
+                    <p>با بیش از ۱۰ سال تجربه درخشان در مشاوره تحصیلی و برنامه‌ریزی کنکور، همراه شما در مسیر موفقیت.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>دسترسی سریع</h3>
+                    <a href="#home">صفحه اصلی</a>
+                    <a href="#services">خدمات</a>
+                    <a href="#challenge">چالش رایگان</a>
+                    <a href="#blog">مقالات</a>
+                    <a href="#contact">تماس با ما</a>
+                </div>
+                <div class="footer-section">
+                    <h3>خدمات</h3>
+                    <a href="#">برنامه‌ریزی تحصیلی</a>
+                    <a href="#">مشاوره کنکور</a>
+                    <a href="#">انتخاب رشته</a>
+                    <a href="#">پشتیبانی ۲۴/۷</a>
+                </div>
+                <div class="footer-section">
+                    <h3>تماس با ما</h3>
+                    <p>📞 ۲۱-۱۲۳۴۵۶۷۸</p>
+                    <p>📱 ۰۹۱۲-۱۲۳-۴۵۶۷</p>
+                    <p>✉️ info@example.com</p>
+                    <p>📍 تهران</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; ۱۴۰۵ مشاوره تحصیلی. تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-cta">
+        <a href="#contact" class="btn btn-primary">دریافت مشاوره رایگان</a>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const konkoorDate = new Date('2026-07-10T08:00:00');
+            const now = new Date();
+            const diff = konkoorDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Mobile Menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 120;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('درخواست شما با موفقیت ارسال شد! به زودی با شما تماس خواهیم گرفت.');
+            e.target.reset();
+        });
+
+        // Active Navigation
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id]');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
