@@ -3,1314 +3,2432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشاوره تحصیلی پریمیوم - مسیر موفقیت شما</title>
-    <meta name="description" content="خدمات مشاوره تحصیلی حرفه‌ای با بیش از ۱۰ سال تجربه. برنامه‌ریزی تحصیلی، مشاوره کنکور و پشتیبانی مداوم.">
+    <title>آکادمی پرستیژ - مشاوره تحصیلی لوکس</title>
+    <meta name="description" content="تجربه‌ای متفاوت از مشاوره تحصیلی پریمیوم">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            --primary: #1e3a8a;
-            --primary-dark: #1e40af;
-            --secondary: #f59e0b;
-            --secondary-dark: #d97706;
-            --accent: #dc2626;
-            --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --white: #ffffff;
-            --light-bg: #f3f4f6;
-            --border: #e5e7eb;
-            --shadow: 0 2px 8px rgba(0,0,0,0.1);
-            --shadow-lg: 0 4px 16px rgba(0,0,0,0.15);
-            --transition: all 0.3s ease;
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #13131a;
+            --bg-tertiary: #1a1a24;
+            --gold: #d4af37;
+            --gold-light: #f4c842;
+            --gold-dark: #b8941f;
+            --cream: #f5f1e8;
+            --cream-soft: #e8e0d0;
+            --accent: #c9a961;
+            --text-primary: #f5f1e8;
+            --text-secondary: rgba(245, 241, 232, 0.7);
+            --text-muted: rgba(245, 241, 232, 0.5);
+            --border: rgba(212, 175, 55, 0.15);
+            --border-strong: rgba(212, 175, 55, 0.3);
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-strong: rgba(255, 255, 255, 0.05);
+            --shadow-gold: 0 0 40px rgba(212, 175, 55, 0.15);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --transition: cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
+        html { scroll-behavior: smooth; }
+        
         body { 
             font-family: 'Vazirmatn', sans-serif; 
-            direction: rtl; 
-            background: var(--light-bg); 
-            color: var(--text-dark); 
+            background: var(--bg-primary); 
+            color: var(--text-primary); 
             line-height: 1.8; 
             overflow-x: hidden;
+            cursor: none;
         }
-        h1,h2,h3,h4,h5,h6 { font-weight: 700; line-height: 1.4; color: var(--primary); }
-        h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-        h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
-        h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
-        p { color: var(--text-light); font-size: 0.95rem; line-height: 1.8; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
         
-        /* Top Bar */
-        .top-bar {
-            background: var(--primary);
-            color: var(--white);
-            padding: 0.5rem 0;
-            font-size: 0.875rem;
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease, width 0.3s, height 0.3s, background 0.3s;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
         }
-        .top-bar-content {
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.3s ease, width 0.3s, height 0.3s, opacity 0.3s;
+            transform: translate(-50%, -50%);
+            opacity: 0.5;
+        }
+        .cursor.hover {
+            width: 0;
+            height: 0;
+        }
+        .cursor-follower.hover {
+            width: 60px;
+            height: 60px;
+            opacity: 1;
+            background: rgba(212, 175, 55, 0.1);
+        }
+        
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-primary);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 2rem;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .preloader-logo {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.3em;
+            animation: logoReveal 2s ease forwards;
+        }
+        .preloader-bar {
+            width: 200px;
+            height: 2px;
+            background: var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        .preloader-bar::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light));
+            animation: loadBar 2s ease forwards;
+        }
+        @keyframes loadBar {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        @keyframes logoReveal {
+            from { opacity: 0; letter-spacing: 1em; }
+            to { opacity: 1; letter-spacing: 0.3em; }
+        }
+        
+        /* Noise Texture Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1;
+            mix-blend-mode: overlay;
+        }
+        
+        /* Gradient Orbs */
+        .gradient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #4a3a1a 0%, transparent 70%);
+            bottom: 20%;
+            left: -100px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background: rgba(10, 10, 15, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s var(--transition);
+        }
+        .nav.scrolled {
+            padding: 1rem 0;
+            background: rgba(10, 10, 15, 0.95);
+        }
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .top-bar-right {
-            display: flex;
-            gap: 2rem;
-        }
-        .top-bar-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .top-bar-left {
-            display: flex;
-            gap: 1.5rem;
-        }
-        .top-bar a {
-            color: var(--white);
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            color: var(--cream);
             text-decoration: none;
-            transition: var(--transition);
-        }
-        .top-bar a:hover { color: var(--secondary); }
-        
-        /* Header */
-        .header { 
-            background: var(--white); 
-            box-shadow: var(--shadow); 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000;
-        }
-        .nav { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 1rem 0;
-        }
-        .logo { 
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-        .logo-icon { 
-            width: 60px; 
-            height: 60px; 
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
-            border-radius: 12px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: var(--white); 
-            font-size: 2rem;
-            box-shadow: var(--shadow);
-        }
-        .logo-text h1 {
-            font-size: 1.5rem;
-            margin: 0;
-            color: var(--primary);
-        }
-        .logo-text span {
-            font-size: 0.875rem;
-            color: var(--text-light);
-        }
-        .nav-menu { 
-            display: flex; 
-            list-style: none; 
-            gap: 0.5rem; 
-            align-items: center;
-        }
-        .nav-menu a { 
-            color: var(--text-dark); 
-            text-decoration: none; 
-            font-weight: 600; 
-            padding: 0.75rem 1.25rem;
-            border-radius: 8px;
-            transition: var(--transition);
-            display: block;
-        }
-        .nav-menu a:hover { 
-            background: var(--light-bg);
-            color: var(--primary);
-        }
-        .nav-menu a.active { 
-            background: var(--primary);
-            color: var(--white);
-        }
-        .nav-cta { 
-            background: var(--secondary); 
-            color: var(--white) !important;
-        }
-        .nav-cta:hover { 
-            background: var(--secondary-dark);
-        }
-        .mobile-toggle { 
-            display: none; 
-            flex-direction: column; 
-            gap: 5px; 
-            cursor: pointer; 
-            padding: 10px;
-        }
-        .mobile-toggle span { 
-            width: 25px; 
-            height: 3px; 
-            background: var(--primary); 
-            border-radius: 3px;
-        }
-        
-        /* Countdown Section */
-        .countdown-section {
-            background: linear-gradient(135deg, var(--accent), #b91c1c);
-            color: var(--white);
-            padding: 2rem 0;
-            text-align: center;
-        }
-        .countdown-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--white);
-        }
-        .countdown-timer {
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gold);
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .countdown-item {
-            background: rgba(255,255,255,0.15);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        .countdown-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            display: block;
-            line-height: 1;
-        }
-        .countdown-label {
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            opacity: 0.9;
-        }
-        
-        /* Hero */
-        .hero { 
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
-            color: var(--white); 
-            padding: 4rem 0;
+            font-weight: 700;
+            color: var(--gold);
+            font-size: 1.25rem;
             position: relative;
+            transition: all 0.4s var(--transition);
         }
-        .hero-content { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 3rem; 
+        .logo-mark::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border: 1px solid var(--gold);
+            opacity: 0;
+            transition: all 0.4s var(--transition);
+        }
+        .logo:hover .logo-mark::before {
+            inset: -10px;
+            opacity: 1;
+        }
+        .logo:hover .logo-mark {
+            background: var(--gold);
+            color: var(--bg-primary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
             align-items: center;
         }
-        .hero-text h1 { 
-            color: var(--white); 
-            margin-bottom: 1.5rem;
+        .nav-menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
         }
-        .hero-text p { 
-            color: rgba(255,255,255,0.9); 
-            font-size: 1.1rem; 
-            margin-bottom: 2rem;
+        .nav-menu a::before {
+            content: attr(data-number);
+            position: absolute;
+            top: -5px;
+            right: -15px;
+            font-size: 0.6rem;
+            color: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-        .hero-buttons { 
-            display: flex; 
-            gap: 1rem; 
-            flex-wrap: wrap;
+        .nav-menu a:hover {
+            color: var(--cream);
         }
-        .hero-image {
-            background: rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            border: 2px solid rgba(255,255,255,0.2);
+        .nav-menu a:hover::before {
+            opacity: 1;
         }
-        .hero-image-placeholder {
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s var(--transition);
+        }
+        .nav-menu a:hover::after {
             width: 100%;
-            height: 300px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 12px;
+        }
+        .nav-cta {
+            padding: 0.875rem 2rem;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold) !important;
+            font-size: 0.85rem !important;
+            letter-spacing: 0.15em !important;
+            text-transform: uppercase;
+            transition: all 0.4s var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: translateY(100%);
+            transition: transform 0.4s var(--transition);
+            z-index: -1;
+        }
+        .nav-cta:hover {
+            color: var(--bg-primary) !important;
+        }
+        .nav-cta:hover::before {
+            transform: translateY(0);
+        }
+        .nav-cta::after { display: none !important; }
+        
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        .mobile-toggle span {
+            width: 30px;
+            height: 1px;
+            background: var(--cream);
+            transition: all 0.3s;
+        }
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8rem 0 4rem;
+            overflow: hidden;
+        }
+        .hero-bg-text {
+            position: absolute;
+            font-size: clamp(8rem, 20vw, 20rem);
+            font-weight: 100;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--border);
+            opacity: 0.3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            letter-spacing: 0.1em;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--gold);
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s 0.3s forwards;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 200;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--cream);
+            opacity: 0;
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+        .hero-title .highlight {
+            font-style: italic;
+            font-weight: 300;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+        .hero-title .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            right: 0;
+            left: 0;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1s 0.7s forwards;
+        }
+        .hero-cta-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s 0.9s forwards;
+        }
+        .hero-meta {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+            opacity: 0;
+            animation: fadeInUp 1s 1.1s forwards;
+        }
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .meta-number {
+            font-size: 2.5rem;
+            font-weight: 200;
+            color: var(--gold);
+            letter-spacing: -0.02em;
+        }
+        .meta-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            height: 600px;
+            opacity: 0;
+            animation: fadeIn 1.5s 1s forwards;
+        }
+        .hero-card {
+            position: absolute;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            padding: 2rem;
+            transition: all 0.5s var(--transition);
+        }
+        .hero-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
+        }
+        .hero-card-1 {
+            top: 0;
+            right: 0;
+            width: 280px;
+            animation: floatCard 6s ease-in-out infinite;
+        }
+        .hero-card-2 {
+            top: 40%;
+            left: 0;
+            width: 240px;
+            animation: floatCard 6s ease-in-out infinite 2s;
+        }
+        .hero-card-3 {
+            bottom: 0;
+            right: 20%;
+            width: 260px;
+            animation: floatCard 6s ease-in-out infinite 4s;
+        }
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+        .card-title {
+            font-size: 1.125rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+        .card-text {
+            font-size: 0.875rem;
+            color: var(--text-muted);
         }
         
         /* Buttons */
-        .btn { 
-            display: inline-block; 
-            padding: 0.875rem 2rem; 
-            border-radius: 8px; 
-            font-weight: 600; 
-            text-decoration: none; 
-            transition: var(--transition); 
-            cursor: pointer; 
-            border: none; 
-            font-size: 0.95rem;
-            text-align: center;
-        }
-        .btn-primary { 
-            background: var(--secondary); 
-            color: var(--white);
-            box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);
-        }
-        .btn-primary:hover { 
-            background: var(--secondary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(245, 158, 11, 0.4);
-        }
-        .btn-secondary { 
-            background: var(--white); 
-            color: var(--primary);
-            border: 2px solid var(--white);
-        }
-        .btn-secondary:hover { 
-            background: transparent; 
-            color: var(--white);
-        }
-        .btn-accent {
-            background: var(--accent);
-            color: var(--white);
-        }
-        .btn-accent:hover {
-            background: #b91c1c;
-        }
-        
-        /* Section */
-        .section { padding: 4rem 0; }
-        .section-header { 
-            text-align: center; 
-            margin-bottom: 2.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid var(--secondary);
-            display: inline-block;
-            width: 100%;
-        }
-        .section-header h2 { 
-            margin-bottom: 0.75rem;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2.5rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            transition: all 0.4s var(--transition);
             position: relative;
-            display: inline-block;
+            overflow: hidden;
         }
-        .section-header h2::after {
+        .btn-primary {
+            background: var(--gold);
+            color: var(--bg-primary);
+        }
+        .btn-primary::before {
             content: '';
             position: absolute;
-            bottom: -10px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 60px;
-            height: 3px;
-            background: var(--secondary);
+            inset: 0;
+            background: var(--cream);
+            transform: translateX(100%);
+            transition: transform 0.4s var(--transition);
+            z-index: 0;
+        }
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-primary:hover::before {
+            transform: translateX(0);
+        }
+        .btn-ghost {
+            background: transparent;
+            color: var(--cream);
+            border: 1px solid var(--border-strong);
+        }
+        .btn-ghost:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .btn-arrow {
+            transition: transform 0.3s;
+        }
+        .btn:hover .btn-arrow {
+            transform: translateX(-5px);
+        }
+        
+        /* Marquee */
+        .marquee {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+            background: var(--bg-secondary);
+        }
+        .marquee-content {
+            display: flex;
+            gap: 4rem;
+            animation: marquee 30s linear infinite;
+            white-space: nowrap;
+        }
+        .marquee-item {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            font-size: 1.5rem;
+            font-weight: 200;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+        }
+        .marquee-item .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        
+        /* Section Header */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+        .section-header {
+            margin-bottom: 5rem;
+            max-width: 800px;
+        }
+        .section-header.center {
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .section-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .section-eyebrow::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .section-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 200;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--cream);
+        }
+        .section-title .italic {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gold);
+        }
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.8;
         }
         
         /* Services */
-        .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); 
-            gap: 1.5rem;
-        }
-        .service-card { 
-            background: var(--white); 
-            border-radius: 12px; 
-            overflow: hidden;
-            box-shadow: var(--shadow); 
-            transition: var(--transition);
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
             border: 1px solid var(--border);
         }
-        .service-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: var(--shadow-lg);
+        .service-card {
+            padding: 3rem 2.5rem;
+            border-left: 1px solid var(--border);
+            position: relative;
+            transition: all 0.5s var(--transition);
+            background: var(--bg-secondary);
+            overflow: hidden;
         }
-        .service-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--white);
-            padding: 1.5rem;
-            text-align: center;
+        .service-card:last-child {
+            border-left: none;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        .service-card:hover {
+            background: var(--bg-tertiary);
+        }
+        .service-number {
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            margin-bottom: 2rem;
+            font-weight: 300;
         }
         .service-icon {
-            font-size: 3rem;
+            width: 70px;
+            height: 70px;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 1.75rem;
+            color: var(--gold);
+            transition: all 0.5s var(--transition);
+        }
+        .service-card:hover .service-icon {
+            background: var(--gold);
+            color: var(--bg-primary);
+            transform: rotate(5deg);
+        }
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--cream);
             margin-bottom: 1rem;
+            letter-spacing: -0.01em;
         }
-        .service-header h3 {
-            color: var(--white);
-            margin: 0;
-        }
-        .service-body {
-            padding: 1.5rem;
-        }
-        .service-body p {
-            margin-bottom: 1.5rem;
+        .service-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            font-size: 0.95rem;
         }
         .service-features {
             list-style: none;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         .service-features li {
-            padding: 0.5rem 0;
+            padding: 0.75rem 0;
             border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
         }
         .service-features li::before {
-            content: '✓';
-            color: var(--secondary);
-            font-weight: bold;
-            font-size: 1.25rem;
+            content: '—';
+            color: var(--gold);
         }
-        .service-card .btn {
-            width: 100%;
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: gap 0.3s;
         }
-        
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--white);
-            padding: 3rem 0;
-            box-shadow: var(--shadow);
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-        .stat-item p {
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-        
-        /* Why Us */
-        .why-us { background: var(--white); }
-        .features-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); 
+        .service-link:hover {
             gap: 1.5rem;
         }
-        .feature-item { 
-            background: var(--light-bg);
-            padding: 2rem; 
-            border-radius: 12px;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: var(--transition);
-        }
-        .feature-item:hover {
-            border-color: var(--secondary);
-            transform: translateY(-5px);
-        }
-        .feature-icon { 
-            width: 70px; 
-            height: 70px; 
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            margin: 0 auto 1rem; 
-            font-size: 2rem; 
-            color: var(--white);
-        }
         
-        /* Challenge Section */
-        .challenge-section {
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
-            padding: 4rem 0;
-            text-align: center;
-            color: var(--white);
+        /* Philosophy / Why Us */
+        .philosophy {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
         }
-        .challenge-section h2 {
-            color: var(--white);
-            margin-bottom: 1rem;
-            font-size: 2rem;
-        }
-        .challenge-section p {
-            color: rgba(255,255,255,0.95);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-        }
-        .challenge-box {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 16px;
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .challenge-features {
+        .philosophy-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-            text-align: right;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
         }
-        .challenge-feature {
-            background: rgba(255,255,255,0.2);
-            padding: 1rem;
-            border-radius: 8px;
+        .philosophy-visual {
+            position: relative;
+            height: 600px;
+        }
+        .philosophy-frame {
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border-strong);
+        }
+        .philosophy-frame::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            bottom: 20px;
+            left: 20px;
+            border: 1px solid var(--gold);
+            opacity: 0.3;
+        }
+        .philosophy-image {
+            position: absolute;
+            inset: 40px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
             display: flex;
             align-items: center;
-            gap: 1rem;
+            justify-content: center;
+            font-size: 8rem;
+            color: var(--gold);
+            opacity: 0.3;
         }
-        .challenge-feature-icon {
+        .philosophy-badge {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: var(--bg-primary);
+            border: 1px solid var(--gold);
+            padding: 2rem;
+            text-align: center;
+        }
+        .philosophy-badge-number {
+            font-size: 3rem;
+            font-weight: 200;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .philosophy-badge-text {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+        }
+        .philosophy-content .section-header {
+            margin-bottom: 3rem;
+        }
+        .philosophy-list {
+            list-style: none;
+        }
+        .philosophy-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 2rem;
+            align-items: start;
+            transition: all 0.4s;
+        }
+        .philosophy-item:hover {
+            padding-right: 1rem;
+        }
+        .philosophy-item-number {
             font-size: 2rem;
+            font-weight: 200;
+            color: var(--gold);
+            font-style: italic;
+        }
+        .philosophy-item-title {
+            font-size: 1.25rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+        .philosophy-item-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        /* Process */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: 10%;
+            left: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.3;
+        }
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        .process-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 200;
+            color: var(--gold);
+            background: var(--bg-primary);
+            position: relative;
+            z-index: 2;
+            transition: all 0.4s var(--transition);
+        }
+        .process-step:hover .process-number {
+            background: var(--gold);
+            color: var(--bg-primary);
+            transform: scale(1.1);
+        }
+        .process-title {
+            font-size: 1.25rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        .process-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
         
         /* Testimonials */
-        .testimonials { background: var(--light-bg); }
-        .testimonials-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); 
-            gap: 1.5rem;
+        .testimonials {
+            background: var(--bg-secondary);
+            overflow: hidden;
         }
-        .testimonial-card { 
-            background: var(--white); 
-            padding: 2rem; 
-            border-radius: 12px; 
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary);
+        .testimonials-slider {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
         }
-        .testimonial-text { 
-            font-style: italic; 
-            margin-bottom: 1.5rem; 
-            color: var(--text-dark);
-            line-height: 2;
+        .testimonial-card {
+            padding: 3rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            position: relative;
+            transition: all 0.5s var(--transition);
         }
-        .testimonial-author { 
-            display: flex; 
-            align-items: center; 
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            font-size: 6rem;
+            color: var(--gold);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .testimonial-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+        }
+        .testimonial-text {
+            color: var(--text-primary);
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
             gap: 1rem;
-            padding-top: 1rem;
+            padding-top: 1.5rem;
             border-top: 1px solid var(--border);
         }
-        .author-avatar { 
-            width: 50px; 
-            height: 50px; 
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: var(--white); 
-            font-weight: 700;
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-weight: 300;
+            font-size: 1.25rem;
         }
-        .author-info h4 { 
-            font-size: 1rem; 
+        .author-name {
+            color: var(--cream);
+            font-size: 1rem;
             margin-bottom: 0.25rem;
-            color: var(--primary);
+            font-weight: 400;
         }
-        .author-info span { 
-            font-size: 0.875rem; 
-            color: var(--text-light);
+        .author-role {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
         }
         
-        /* CTA */
-        .cta-section { 
-            background: var(--primary);
-            color: var(--white); 
-            text-align: center; 
-            padding: 3rem 0;
+        /* Challenge / CTA */
+        .challenge {
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
         }
-        .cta-section h2 { 
-            color: var(--white); 
+        .challenge::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1), transparent 70%);
+        }
+        .challenge-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        .challenge-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 200;
+            margin-bottom: 1.5rem;
+            color: var(--cream);
+        }
+        .challenge-title .italic {
+            font-style: italic;
+            color: var(--gold);
+        }
+        .challenge-text {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        .challenge-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .challenge-feature {
+            padding: 2rem 1rem;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+        }
+        .challenge-feature:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+        .challenge-feature-icon {
+            font-size: 2rem;
+            color: var(--gold);
             margin-bottom: 1rem;
         }
-        .cta-section p { 
-            color: rgba(255,255,255,0.9); 
-            margin-bottom: 2rem;
+        .challenge-feature-title {
+            color: var(--cream);
+            font-size: 0.95rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        .challenge-feature-text {
+            color: var(--text-muted);
+            font-size: 0.8rem;
         }
         
         /* Blog */
-        .blog-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); 
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .blog-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.5s var(--transition);
+            cursor: pointer;
+        }
+        .blog-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+        }
+        .blog-image {
+            height: 250px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+        .blog-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, var(--bg-secondary), transparent);
+        }
+        .blog-content {
+            padding: 2rem;
+        }
+        .blog-meta {
+            display: flex;
             gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
         }
-        .blog-card { 
-            background: var(--white); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            box-shadow: var(--shadow); 
-            transition: var(--transition);
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .blog-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: var(--shadow-lg);
+        .blog-meta .category {
+            color: var(--gold);
         }
-        .blog-image { 
-            width: 100%; 
-            height: 180px; 
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark)); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: var(--white); 
-            font-size: 3rem;
+        .blog-title {
+            font-size: 1.25rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            font-weight: 300;
+            line-height: 1.5;
+            transition: color 0.3s;
         }
-        .blog-content { padding: 1.5rem; }
-        .blog-meta { 
-            display: flex; 
-            gap: 1rem; 
-            margin-bottom: 1rem; 
-            font-size: 0.8rem; 
-            color: var(--text-light);
+        .blog-card:hover .blog-title {
+            color: var(--gold);
         }
-        .blog-card h3 { 
-            margin-bottom: 1rem; 
-            font-size: 1.125rem;
-            line-height: 1.6;
+        .blog-excerpt {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .blog-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: gap 0.3s;
+        }
+        .blog-card:hover .blog-link {
+            gap: 1.5rem;
         }
         
         /* FAQ */
-        .faq-list { max-width: 900px; margin: 0 auto; }
-        .faq-item { 
-            background: var(--white); 
-            border: 1px solid var(--border); 
-            border-radius: 8px; 
-            margin-bottom: 1rem;
-            overflow: hidden;
+        .faq {
+            background: var(--bg-secondary);
         }
-        .faq-question { 
-            padding: 1.25rem; 
-            cursor: pointer; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            font-weight: 700; 
-            color: var(--primary);
-            background: var(--light-bg);
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
         }
-        .faq-icon { 
-            width: 30px; 
-            height: 30px; 
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            transition: var(--transition);
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s;
+        }
+        .faq-question {
+            padding: 2rem 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            transition: color 0.3s;
+        }
+        .faq-question:hover {
+            color: var(--gold);
+        }
+        .faq-question-text {
+            font-size: 1.125rem;
+            font-weight: 300;
+            color: var(--cream);
+            transition: color 0.3s;
+        }
+        .faq-item.active .faq-question-text {
+            color: var(--gold);
+        }
+        .faq-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-strong);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s var(--transition);
             flex-shrink: 0;
-            font-size: 1.25rem;
+            position: relative;
         }
-        .faq-item.active .faq-icon { 
-            transform: rotate(45deg);
+        .faq-icon::before,
+        .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: var(--gold);
+            transition: transform 0.4s var(--transition);
         }
-        .faq-answer { 
-            max-height: 0; 
-            overflow: hidden; 
-            transition: max-height 0.3s ease;
+        .faq-icon::before {
+            width: 12px;
+            height: 1px;
         }
-        .faq-answer-content { 
-            padding: 1.25rem;
-            border-top: 1px solid var(--border);
+        .faq-icon::after {
+            width: 1px;
+            height: 12px;
         }
-        .faq-item.active .faq-answer { 
+        .faq-item.active .faq-icon {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+        .faq-item.active .faq-icon::before,
+        .faq-item.active .faq-icon::after {
+            background: var(--bg-primary);
+        }
+        .faq-item.active .faq-icon::after {
+            transform: rotate(90deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s var(--transition);
+        }
+        .faq-answer-content {
+            padding: 0 0 2rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.9;
+            max-width: 700px;
+        }
+        .faq-item.active .faq-answer {
             max-height: 500px;
         }
         
-        /* Form */
-        .contact-section {
-            background: var(--white);
+        /* Contact */
+        .contact {
+            position: relative;
+            overflow: hidden;
         }
-        .contact-form { 
-            max-width: 700px; 
-            margin: 0 auto; 
-            background: var(--light-bg); 
-            padding: 2.5rem; 
-            border-radius: 12px;
-            border: 2px solid var(--border);
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .contact-info {
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+        }
+        .contact-info-title {
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            font-weight: 200;
+        }
+        .contact-info-text {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        .contact-details {
+            list-style: none;
+        }
+        .contact-detail {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            align-items: center;
+        }
+        .contact-detail-icon {
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .contact-detail-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        .contact-detail-value {
+            color: var(--cream);
+            font-size: 1rem;
+        }
+        
+        .contact-form {
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+        }
+        .form-title {
+            font-size: 1.5rem;
+            color: var(--cream);
+            margin-bottom: 0.5rem;
+            font-weight: 200;
+        }
+        .form-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
         }
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 1.5rem;
         }
-        .form-group { margin-bottom: 1.25rem; }
-        .form-group label { 
-            display: block; 
-            margin-bottom: 0.5rem; 
-            font-weight: 600; 
-            color: var(--primary);
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
         }
-        .form-group input,
-        .form-group select,
-        .form-group textarea { 
-            width: 100%; 
-            padding: 0.875rem; 
-            border: 2px solid var(--border); 
-            border-radius: 8px; 
-            font-family: inherit; 
-            font-size: 0.95rem; 
-            transition: var(--transition);
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
         }
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus { 
-            outline: none; 
-            border-color: var(--primary);
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border);
+            color: var(--cream);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
         }
-        .form-group textarea { 
-            resize: vertical; 
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        .form-select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23d4af37' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left center;
+            padding-left: 20px;
+        }
+        .form-select option {
+            background: var(--bg-primary);
+            color: var(--cream);
+        }
+        .form-textarea {
+            resize: vertical;
             min-height: 100px;
         }
         
         /* Footer */
-        .footer { 
-            background: var(--primary); 
-            color: var(--white); 
-            padding: 3rem 0 1rem;
+        .footer {
+            background: var(--bg-primary);
+            padding: 5rem 0 2rem;
+            border-top: 1px solid var(--border);
+            position: relative;
         }
-        .footer-content { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); 
-            gap: 2rem; 
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .footer-brand {
+            max-width: 400px;
+        }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            color: var(--cream);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
             margin-bottom: 2rem;
+            font-weight: 300;
         }
-        .footer-section h3 { 
-            color: var(--secondary);
-            margin-bottom: 1.25rem;
-            font-size: 1.25rem;
+        .footer-social {
+            display: flex;
+            gap: 1rem;
         }
-        .footer-section p,
-        .footer-section a { 
-            color: rgba(255,255,255,0.85); 
-            text-decoration: none; 
-            display: block; 
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .social-link:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+        .footer-title {
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
             margin-bottom: 0.75rem;
-            transition: var(--transition);
         }
-        .footer-section a:hover { 
-            color: var(--secondary);
-            padding-right: 5px;
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            display: inline-block;
         }
-        .footer-bottom { 
-            text-align: center; 
-            padding-top: 2rem; 
-            border-top: 1px solid rgba(255,255,255,0.1); 
-            color: rgba(255,255,255,0.7);
+        .footer-links a:hover {
+            color: var(--gold);
+            transform: translateX(-5px);
+        }
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
         
-        /* Sticky CTA */
-        .sticky-cta { 
-            display: none; 
-            position: fixed; 
-            bottom: 0; 
-            left: 0; 
-            right: 0; 
-            background: var(--white); 
-            padding: 1rem; 
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.1); 
+        /* Sticky Mobile CTA */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem;
+            border-top: 1px solid var(--border);
             z-index: 999;
         }
-        .sticky-cta .btn { width: 100%; }
+        .sticky-cta .btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s var(--transition), transform 1s var(--transition);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-light);
+        }
+        
+        /* Selection */
+        ::selection {
+            background: var(--gold);
+            color: var(--bg-primary);
+        }
         
         /* Responsive */
-        @media (max-width: 768px) {
-            .top-bar-right { display: none; }
-            .nav-menu { 
-                position: fixed; 
-                top: 0;
-                right: -100%; 
-                width: 80%;
-                max-width: 300px;
-                height: 100vh; 
-                background: var(--white); 
-                flex-direction: column; 
-                padding: 6rem 1.5rem 1.5rem;
-                transition: var(--transition);
-                box-shadow: var(--shadow-lg);
+        @media (max-width: 1024px) {
+            .hero-content,
+            .philosophy-grid,
+            .contact-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
-            .nav-menu.active { right: 0; }
-            .mobile-toggle { display: flex; }
-            .hero-content { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
-            .countdown-timer { gap: 0.75rem; }
-            .countdown-item { padding: 0.75rem 1rem; }
-            .countdown-number { font-size: 1.75rem; }
-            .sticky-cta { display: block; }
-            .section { padding: 3rem 0; }
+            .services-grid,
+            .testimonials-slider,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .service-card {
+                border-left: none;
+                border-bottom: 1px solid var(--border);
+            }
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-grid::before {
+                display: none;
+            }
+            .challenge-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-visual {
+                height: 400px;
+            }
+            .philosophy-visual {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            .cursor, .cursor-follower { display: none; }
+            .container { padding: 0 1.5rem; }
+            .section { padding: 5rem 0; }
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: var(--bg-primary);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: right 0.5s var(--transition);
+                border-right: 1px solid var(--border);
+            }
+            .nav-menu.active {
+                right: 0;
+            }
+            .nav-menu a {
+                font-size: 1.25rem;
+            }
+            .mobile-toggle {
+                display: flex;
+            }
+            .hero {
+                padding: 6rem 0 3rem;
+                min-height: auto;
+            }
+            .hero-bg-text {
+                display: none;
+            }
+            .hero-meta {
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+            .hero-visual {
+                height: 500px;
+                position: relative;
+            }
+            .hero-card {
+                position: relative;
+                width: 100%;
+                margin-bottom: 1rem;
+                top: auto !important;
+                right: auto !important;
+                left: auto !important;
+                bottom: auto !important;
+            }
+            .process-grid,
+            .challenge-features,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .sticky-cta {
+                display: block;
+            }
+            .contact-info,
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+            .marquee-item {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-content">
-                <div class="top-bar-right">
-                    <div class="top-bar-item">📞 ۰۲-۱۲۳۴۵۶۷۸</div>
-                    <div class="top-bar-item">📱 ۹۱۲-۱۲۳-۴۵۶۷</div>
-                </div>
-                <div class="top-bar-left">
-                    <a href="#">درباره ما</a>
-                    <a href="#">تماس با ما</a>
-                    <a href="#">ورود / ثبت‌نام</a>
-                </div>
-            </div>
-        </div>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">PRESTIGE</div>
+        <div class="preloader-bar"></div>
     </div>
-
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <div class="logo">
-                <div class="logo-icon">🎓</div>
-                <div class="logo-text">
-                    <h1>مشاوره تحصیلی</h1>
-                    <span>مسیر موفقیت شما</span>
-                </div>
-            </div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+    
+    <!-- Gradient Orbs -->
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-mark">P</div>
+                <span>PRESTIGE</span>
+            </a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="active">صفحه اصلی</a></li>
-                <li><a href="#services">خدمات</a></li>
-                <li><a href="#challenge">چالش رایگان</a></li>
-                <li><a href="#about">درباره ما</a></li>
-                <li><a href="#blog">مقالات</a></li>
-                <li><a href="#faq">سوالات متداول</a></li>
-                <li><a href="#contact" class="nav-cta">مشاوره رایگان</a></li>
+                <li><a href="#home" data-number="01">خانه</a></li>
+                <li><a href="#services" data-number="02">خدمات</a></li>
+                <li><a href="#philosophy" data-number="03">فلسفه ما</a></li>
+                <li><a href="#blog" data-number="04">مقالات</a></li>
+                <li><a href="#faq" data-number="05">سوالات</a></li>
+                <li><a href="#contact" class="nav-cta">رزرو مشاوره</a></li>
             </ul>
             <div class="mobile-toggle" id="mobileToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-        </nav>
-    </header>
-
-    <!-- Countdown Section -->
-    <section class="countdown-section">
-        <div class="container">
-            <h2 class="countdown-title">⏰ شمارش معکوس کنکور ۱۴۰۵</h2>
-            <div class="countdown-timer" id="countdownTimer">
-                <div class="countdown-item">
-                    <span class="countdown-number" id="days">۰</span>
-                    <div class="countdown-label">روز</div>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="hours">۰</span>
-                    <div class="countdown-label">ساعت</div>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="minutes">۰</span>
-                    <div class="countdown-label">دقیقه</div>
-                </div>
-                <div class="countdown-item">
-                    <span class="countdown-number" id="seconds">۰</span>
-                    <div class="countdown-label">ثانیه</div>
-                </div>
-            </div>
         </div>
-    </section>
-
+    </nav>
+    
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-bg-text">PRESTIGE</div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>با مشاوره تخصصی، رتبه برتر کنکور شو!</h1>
-                    <p>بیش از ۱۰ سال تجربه درخشان در مشاوره تحصیلی و برنامه‌ریزی کنکور. همراه شما از امروز تا روز کنکور با برنامه‌ای شخصی‌سازی شده و پشتیبانی مداوم.</p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">دریافت مشاوره رایگان</a>
-                        <a href="#challenge" class="btn btn-secondary">چالش ۵ روزه رایگان</a>
+                    <div class="hero-eyebrow">مشاوره تحصیلی پریمیوم</div>
+                    <h1 class="hero-title">
+                        مسیر <span class="highlight">موفقیت</span><br>
+                        با طراحی اختصاصی
+                    </h1>
+                    <p class="hero-description">
+                        تجربه‌ای متفاوت از مشاوره تحصیلی؛ جایی که هر برنامه، منحصراً برای شما طراحی می‌شود. ما به شما کمک می‌کنیم تا به بهترین نسخه خود تبدیل شوید.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#contact" class="btn btn-primary">
+                            <span>شروع همکاری</span>
+                            <span class="btn-arrow">←</span>
+                        </a>
+                        <a href="#services" class="btn btn-ghost">
+                            <span>مشاهده خدمات</span>
+                        </a>
+                    </div>
+                    <div class="hero-meta">
+                        <div class="meta-item">
+                            <div class="meta-number">+۲۵۰۰</div>
+                            <div class="meta-label">دانش‌آموز موفق</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-number">۹۸٪</div>
+                            <div class="meta-label">رضایت مراجعین</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-number">+۱۰</div>
+                            <div class="meta-label">سال تجربه</div>
+                        </div>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="hero-image-placeholder">📚</div>
+                <div class="hero-visual">
+                    <div class="hero-card hero-card-1">
+                        <div class="card-icon">✦</div>
+                        <div class="card-title">برنامه اختصاصی</div>
+                        <div class="card-text">طراحی شده بر اساس اهداف شما</div>
+                    </div>
+                    <div class="hero-card hero-card-2">
+                        <div class="card-icon">◆</div>
+                        <div class="card-title">مشاوره خصوصی</div>
+                        <div class="card-text">همراهی گام به گام تا موفقیت</div>
+                    </div>
+                    <div class="hero-card hero-card-3">
+                        <div class="card-icon">❖</div>
+                        <div class="card-title">پشتیبانی ۲۴/۷</div>
+                        <div class="card-text">همیشه در کنار شما هستیم</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Stats Bar -->
-    <section class="stats-bar">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>+۲۵۰۰</h3>
-                    <p>دانش‌آموز موفق</p>
-                </div>
-                <div class="stat-item">
-                    <h3>+۱۰</h3>
-                    <p>سال تجربه</p>
-                </div>
-                <div class="stat-item">
-                    <h3>۹۸٪</h3>
-                    <p>رضایت مراجعین</p>
-                </div>
-                <div class="stat-item">
-                    <h3>+۵۰</h3>
-                    <p>رتبه برتر</p>
-                </div>
-            </div>
+    
+    <!-- Marquee -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <div class="marquee-item">برنامه‌ریزی تحصیلی <span class="dot"></span></div>
+            <div class="marquee-item">مشاوره کنکور <span class="dot"></span></div>
+            <div class="marquee-item">انتخاب رشته <span class="dot"></span></div>
+            <div class="marquee-item">پشتیبانی مداوم <span class="dot"></span></div>
+            <div class="marquee-item">تحلیل کارنامه <span class="dot"></span></div>
+            <div class="marquee-item">برنامه‌ریزی تحصیلی <span class="dot"></span></div>
+            <div class="marquee-item">مشاوره کنکور <span class="dot"></span></div>
+            <div class="marquee-item">انتخاب رشته <span class="dot"></span></div>
+            <div class="marquee-item">پشتیبانی مداوم <span class="dot"></span></div>
+            <div class="marquee-item">تحلیل کارنامه <span class="dot"></span></div>
         </div>
-    </section>
-
+    </div>
+    
     <!-- Services Section -->
     <section class="section" id="services">
         <div class="container">
-            <div class="section-header">
-                <h2>خدمات ما</h2>
+            <div class="section-header reveal">
+                <div class="section-eyebrow">خدمات ما</div>
+                <h2 class="section-title">خدماتی که <span class="italic">تفاوت</span> ایجاد می‌کنند</h2>
+                <p class="section-description">
+                    مجموعه‌ای کامل از خدمات مشاوره‌ای طراحی شده برای موفقیت تحصیلی شما. هر خدمت، با دقت و ظرافت ارائه می‌شود.
+                </p>
             </div>
-            <div class="services-grid">
+            <div class="services-grid reveal">
                 <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">📋</div>
-                        <h3>برنامه‌ریزی تحصیلی</h3>
-                    </div>
-                    <div class="service-body">
-                        <p>برنامه مطالعاتی کاملاً شخصی‌سازی شده بر اساس سطح، هدف و زمان شما</p>
-                        <ul class="service-features">
-                            <li>برنامه هفتگی و روزانه</li>
-                            <li>تنظیم بر اساس شرایط شما</li>
-                            <li>پیگیری مستمر اجرا</li>
-                            <li>اصلاح و بهینه‌سازی</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-primary">شروع کنید</a>
-                    </div>
+                    <div class="service-number">— ۰۱</div>
+                    <div class="service-icon">✦</div>
+                    <h3 class="service-title">برنامه‌ریزی تحصیلی</h3>
+                    <p class="service-text">
+                        طراحی برنامه مطالعاتی منحصراً برای شما، بر اساس اهداف، توانایی‌ها و زمان موجود.
+                    </p>
+                    <ul class="service-features">
+                        <li>برنامه هفتگی شخصی‌سازی شده</li>
+                        <li>تنظیم بر اساس سطح شما</li>
+                        <li>پیگیری مستمر اجرا</li>
+                        <li>بهینه‌سازی مداوم</li>
+                    </ul>
+                    <a href="#contact" class="service-link">اطلاعات بیشتر <span>←</span></a>
                 </div>
                 <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">💡</div>
-                        <h3>مشاوره تخصصی کنکور</h3>
-                    </div>
-                    <div class="service-body">
-                        <p>مشاوره فردی با متخصصین مجرب برای رسیدن به بهترین نتیجه</p>
-                        <ul class="service-features">
-                            <li>مشاوره انتخاب رشته</li>
-                            <li>تحلیل کارنامه</li>
-                            <li>استراتژی مطالعه</li>
-                            <li>رفع اشکال درسی</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-primary">شروع کنید</a>
-                    </div>
+                    <div class="service-number">— ۰۲</div>
+                    <div class="service-icon">◆</div>
+                    <h3 class="service-title">مشاوره تخصصی</h3>
+                    <p class="service-text">
+                        مشاوره فردی با متخصصین مجرب در زمینه انتخاب رشته، آمادگی کنکور و رفع چالش‌ها.
+                    </p>
+                    <ul class="service-features">
+                        <li>مشاوره انتخاب رشته</li>
+                        <li>تحلیل دقیق کارنامه</li>
+                        <li>استراتژی مطالعه</li>
+                        <li>رفع اشکال درسی</li>
+                    </ul>
+                    <a href="#contact" class="service-link">اطلاعات بیشتر <span>←</span></a>
                 </div>
                 <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon">🎯</div>
-                        <h3>پشتیبانی ۲۴/۷</h3>
-                    </div>
-                    <div class="service-body">
-                        <p>همیشه در کنار شما هستیم. هر سوالی دارید، پاسخ می‌دهیم</p>
-                        <ul class="service-features">
-                            <li>پشتیبانی تلفنی</li>
-                            <li>پاسگویی در پیام‌رسان</li>
-                            <li>جلسات آنلاین</li>
-                            <li>انگیزش و پیگیری</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-primary">شروع کنید</a>
-                    </div>
+                    <div class="service-number">— ۰۳</div>
+                    <div class="service-icon">❖</div>
+                    <h3 class="service-title">پشتیبانی مداوم</h3>
+                    <p class="service-text">
+                        همراهی ۲۴ ساعته در تمام مراحل. هر سوالی دارید، در کوتاه‌ترین زمان پاسخ می‌دهیم.
+                    </p>
+                    <ul class="service-features">
+                        <li>پشتیبانی تلفنی</li>
+                        <li>پاسخگویی در پیام‌رسان</li>
+                        <li>جلسات آنلاین منظم</li>
+                        <li>انگیزش و پیگیری</li>
+                    </ul>
+                    <a href="#contact" class="service-link">اطلاعات بیشتر <span>←</span></a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Challenge Section -->
-    <section class="challenge-section" id="challenge">
+    
+    <!-- Philosophy Section -->
+    <section class="section philosophy" id="philosophy">
         <div class="container">
-            <h2>🎁 چالش ۵ روزه رایگان</h2>
-            <p>همین حالا در چالش ۵ روزه رایگان ما شرکت کنید و با روش‌های برنامه‌ریزی صحیح آشنا شوید</p>
-            <div class="challenge-box">
-                <div class="challenge-features">
-                    <div class="challenge-feature">
-                        <span class="challenge-feature-icon">✓</span>
-                        <div>
-                            <strong>برنامه مطالعاتی شخصی</strong>
-                            <p style="margin: 0; font-size: 0.9rem;">برای ۵ روز متوالی</p>
-                        </div>
-                    </div>
-                    <div class="challenge-feature">
-                        <span class="challenge-feature-icon">✓</span>
-                        <div>
-                            <strong>مشاوره انگیزشی</strong>
-                            <p style="margin: 0; font-size: 0.9rem;">روزانه توسط مشاور</p>
-                        </div>
-                    </div>
-                    <div class="challenge-feature">
-                        <span class="challenge-feature-icon">✓</span>
-                        <div>
-                            <strong>گروه پشتیبانی</strong>
-                            <p style="margin: 0; font-size: 0.9rem;">همراه با خانواده</p>
-                        </div>
-                    </div>
-                    <div class="challenge-feature">
-                        <span class="challenge-feature-icon">✓</span>
-                        <div>
-                            <strong>نظارت مستمر</strong>
-                            <p style="margin: 0; font-size: 0.9rem;">بر روی اجرای برنامه</p>
-                        </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-visual reveal">
+                    <div class="philosophy-frame"></div>
+                    <div class="philosophy-image">✦</div>
+                    <div class="philosophy-badge">
+                        <div class="philosophy-badge-number">۱۰+</div>
+                        <div class="philosophy-badge-text">سال تجربه</div>
                     </div>
                 </div>
-                <a href="#contact" class="btn btn-accent" style="font-size: 1.1rem; padding: 1rem 3rem;">شرکت رایگان در چالش</a>
+                <div class="philosophy-content reveal">
+                    <div class="section-header">
+                        <div class="section-eyebrow">فلسفه ما</div>
+                        <h2 class="section-title">چرا <span class="italic">پرستیژ</span>؟</h2>
+                        <p class="section-description">
+                            ما به این باوریم که هر دانش‌آموز منحصر به فرد است و مسیر موفقیت هر کس، متفاوت. به همین دلیل، خدمات ما کاملاً شخصی‌سازی شده‌اند.
+                        </p>
+                    </div>
+                    <ul class="philosophy-list">
+                        <li class="philosophy-item">
+                            <div class="philosophy-item-number">۰۱</div>
+                            <div>
+                                <h3 class="philosophy-item-title">تیم متخصص و مجرب</h3>
+                                <p class="philosophy-item-text">مشاوران ما از برترین دانشگاه‌های کشور، با سال‌ها تجربه در کنار شما هستند.</p>
+                            </div>
+                        </li>
+                        <li class="philosophy-item">
+                            <div class="philosophy-item-number">۰۲</div>
+                            <div>
+                                <h3 class="philosophy-item-title">رویکرد کاملاً شخصی</h3>
+                                <p class="philosophy-item-text">هیچ برنامه از پیش تعیین شده‌ای وجود ندارد. همه چیز بر اساس نیاز شما طراحی می‌شود.</p>
+                            </div>
+                        </li>
+                        <li class="philosophy-item">
+                            <div class="philosophy-item-number">۰۳</div>
+                            <div>
+                                <h3 class="philosophy-item-title">نتایج اثبات شده</h3>
+                                <p class="philosophy-item-text">هزاران دانش‌آموز با رتبه‌های برتر کنکور، گواه کیفیت خدمات ما هستند.</p>
+                            </div>
+                        </li>
+                        <li class="philosophy-item">
+                            <div class="philosophy-item-number">۰۴</div>
+                            <div>
+                                <h3 class="philosophy-item-title">تعهد به موفقیت شما</h3>
+                                <p class="philosophy-item-text">موفقیت شما، موفقیت ماست. تا رسیدن به هدف، در کنار شما خواهیم بود.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Why Us -->
-    <section class="section why-us" id="about">
+    
+    <!-- Process Section -->
+    <section class="section">
         <div class="container">
-            <div class="section-header">
-                <h2>چرا ما؟</h2>
+            <div class="section-header center reveal">
+                <div class="section-eyebrow">فرآیند کار</div>
+                <h2 class="section-title">چهار گام تا <span class="italic">موفقیت</span></h2>
+                <p class="section-description">
+                    فرآیندی ساده و شفاف برای همراهی شما در مسیر موفقیت تحصیلی
+                </p>
             </div>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3>تیم متخصص</h3>
-                    <p>مشاوران با تجربه و دارای مدارک معتبر از دانشگاه‌های برتر کشور</p>
+            <div class="process-grid reveal">
+                <div class="process-step">
+                    <div class="process-number">۰۱</div>
+                    <h3 class="process-title">مشاوره اولیه</h3>
+                    <p class="process-text">بررسی دقیق وضعیت فعلی، اهداف و چالش‌های شما در جلسه‌ای رایگان</p>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3>برنامه شخصی</h3>
-                    <p>هر برنامه بر اساس نیازها و شرایط منحصر به فرد شما طراحی می‌شود</p>
+                <div class="process-step">
+                    <div class="process-number">۰۲</div>
+                    <h3 class="process-title">طراحی برنامه</h3>
+                    <p class="process-text">تهیه برنامه مطالعاتی منحصراً برای شما، بر اساس نیازهای خاص</p>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3>نتایج اثبات شده</h3>
-                    <p>هزاران دانش‌آموز موفق با رتبه‌های برتر در کنکور سراسری</p>
+                <div class="process-step">
+                    <div class="process-number">۰۳</div>
+                    <h3 class="process-title">اجرا و پیگیری</h3>
+                    <p class="process-text">همراهی گام به گام در اجرای برنامه و نظارت مستمر بر پیشرفت</p>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">✓</div>
-                    <h3>پشتیبانی دائمی</h3>
-                    <p>همیشه در دسترس برای پاسخگویی به سوالات و رفع مشکلات</p>
+                <div class="process-step">
+                    <div class="process-number">۰۴</div>
+                    <h3 class="process-title">بهینه‌سازی</h3>
+                    <p class="process-text">تنظیم و بهبود مداوم برنامه بر اساس بازخوردها و نتایج</p>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Testimonials -->
     <section class="section testimonials">
         <div class="container">
-            <div class="section-header">
-                <h2>نظرات دانش‌آموزان</h2>
+            <div class="section-header center reveal">
+                <div class="section-eyebrow">تجربه مراجعین</div>
+                <h2 class="section-title">صدای <span class="italic">موفقیت</span></h2>
+                <p class="section-description">
+                    تجربه واقعی دانش‌آموزان و والدینی که به ما اعتماد کرده‌اند
+                </p>
             </div>
-            <div class="testimonials-grid">
+            <div class="testimonials-slider reveal">
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"با کمک مشاوران این مجموعه، توانستم از رتبه ۱۵۰۰۰ به رتبه ۱۵۶ برسم. برنامه‌ریزی دقیق و پیگیری مداوم واقعاً معجزه کرد. ممنونم از تیم عالی‌تون."</p>
+                    <div class="testimonial-rating">★ ★ ★ ★ ★</div>
+                    <p class="testimonial-text">
+                        "با کمک مشاوران پرستیژ، توانستم از رتبه ۱۵۰۰۰ به رتبه ۱۵۶ برسم. برنامه‌ریزی دقیق و پیگیری مداوم واقعاً معجزه کرد."
+                    </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">س</div>
-                        <div class="author-info">
-                            <h4>سارا احمدی</h4>
-                            <span>رتبه ۱۵۶ کنکور تجربی ۱۴۰۴</span>
+                        <div>
+                            <div class="author-name">سارا احمدی</div>
+                            <div class="author-role">رتبه ۱۵۶ کنکور تجربی</div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"پسرم همیشه در درس ریاضی مشکل داشت. بعد از سه ماه کار با این تیم، نمراتش از ۱۲ به ۱۹ رسید. واقعاً روش‌شون متفاوته."</p>
+                    <div class="testimonial-rating">★ ★ ★ ★ ★</div>
+                    <p class="testimonial-text">
+                        "پسرم همیشه در ریاضی مشکل داشت. بعد از سه ماه کار با این تیم، نمراتش از ۱۲ به ۱۹ رسید. واقعاً روش‌شان متفاست."
+                    </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">م</div>
-                        <div class="author-info">
-                            <h4>مریم رضایی</h4>
-                            <span>والد دانش‌آموز پایه یازدهم</span>
+                        <div>
+                            <div class="author-name">مریم رضایی</div>
+                            <div class="author-role">والد دانش‌آموز یازدهم</div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"چالش ۵ روزه رایگان نقطه عطفی بود. فهمیدم چطور باید درست برنامه‌ریزی کنم. الان با انگیزه بیشتری دارم درس می‌خونم."</p>
+                    <div class="testimonial-rating">★ ★ ★ ★ ★</div>
+                    <p class="testimonial-text">
+                        "انتخاب رشته برایم سخت بود. مشاوران با صبر و حوصله تمام گزینه‌ها را بررسی کردند و بهترین انتخاب را داشتم."
+                    </p>
                     <div class="testimonial-author">
                         <div class="author-avatar">ع</div>
-                        <div class="author-info">
-                            <h4>علی محمدی</h4>
-                            <span>دانش‌آموز پایه دوازدهم</span>
+                        <div>
+                            <div class="author-name">علی محمدی</div>
+                            <div class="author-role">دانشجوی پزشکی</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
+    <!-- Challenge Section -->
+    <section class="challenge">
+        <div class="container">
+            <div class="challenge-content reveal">
+                <div class="section-eyebrow" style="justify-content: center;">پیشنهاد ویژه</div>
+                <h2 class="challenge-title">
+                    چالش <span class="italic">۵ روزه</span> رایگان
+                </h2>
+                <p class="challenge-text">
+                    قبل از شروع همکاری، کیفیت خدمات ما را تجربه کنید. در چالش ۵ روزه رایگان ما شرکت کنید و تفاوت را احساس کنید.
+                </p>
+                <div class="challenge-features">
+                    <div class="challenge-feature">
+                        <div class="challenge-feature-icon">✦</div>
+                        <div class="challenge-feature-title">برنامه شخصی</div>
+                        <div class="challenge-feature-text">برای ۵ روز متوالی</div>
+                    </div>
+                    <div class="challenge-feature">
+                        <div class="challenge-feature-icon">◆</div>
+                        <div class="challenge-feature-title">مشاوره روزانه</div>
+                        <div class="challenge-feature-text">توسط متخصصین</div>
+                    </div>
+                    <div class="challenge-feature">
+                        <div class="challenge-feature-icon">❖</div>
+                        <div class="challenge-feature-title">گروه پشتیبانی</div>
+                        <div class="challenge-feature-text">همراه با خانواده</div>
+                    </div>
+                    <div class="challenge-feature">
+                        <div class="challenge-feature-icon">✧</div>
+                        <div class="challenge-feature-title">نظارت مستمر</div>
+                        <div class="challenge-feature-text">بر اجرای برنامه</div>
+                    </div>
+                </div>
+                <a href="#contact" class="btn btn-primary">
+                    <span>شرکت رایگان در چالش</span>
+                    <span class="btn-arrow">←</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
     <!-- Blog Section -->
     <section class="section" id="blog">
         <div class="container">
-            <div class="section-header">
-                <h2>آخرین مقالات</h2>
+            <div class="section-header reveal">
+                <div class="section-eyebrow">مقالات</div>
+                <h2 class="section-title">آخرین <span class="italic">نوشته‌ها</span></h2>
+                <p class="section-description">
+                    مقالات تخصصی و راهنمایی‌های کاربردی برای موفقیت تحصیلی شما
+                </p>
             </div>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-image">📖</div>
+            <div class="blog-grid reveal">
+                <article class="blog-card">
+                    <div class="blog-image">✦</div>
                     <div class="blog-content">
                         <div class="blog-meta">
+                            <span class="category">تمرکز</span>
                             <span>۱۵ تیر ۱۴۰۵</span>
-                            <span>•</span>
                             <span>۵ دقیقه</span>
                         </div>
-                        <h3>۱۰ روش مؤثر برای افزایش تمرکز در مطالعه</h3>
-                        <a href="#" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">ادامه مطلب</a>
+                        <h3 class="blog-title">۱۰ روش علمی برای افزایش تمرکز در مطالعه</h3>
+                        <p class="blog-excerpt">یادگیری تکنیک‌های اثبات شده برای بهبود تمرکز و بازدهی بیشتر در ساعات مطالعه...</p>
+                        <a href="#" class="blog-link">ادامه مطلب <span>←</span></a>
                     </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">🎯</div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">◆</div>
                     <div class="blog-content">
                         <div class="blog-meta">
+                            <span class="category">انتخاب رشته</span>
                             <span>۱۲ تیر ۱۴۰۵</span>
-                            <span>•</span>
                             <span>۷ دقیقه</span>
                         </div>
-                        <h3>راهنمای کامل انتخاب رشته مناسب</h3>
-                        <a href="#" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">ادامه مطلب</a>
+                        <h3 class="blog-title">راهنمای کامل انتخاب رشته مناسب</h3>
+                        <p class="blog-excerpt">چگونه بهترین رشته را بر اساس علاقه، توانایی و بازار کار انتخاب کنیم؟</p>
+                        <a href="#" class="blog-link">ادامه مطلب <span>←</span></a>
                     </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">⏰</div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-image">❖</div>
                     <div class="blog-content">
                         <div class="blog-meta">
-                            <span>۱۰ تیر ۱۴۵</span>
-                            <span>•</span>
+                            <span class="category">مدیریت زمان</span>
+                            <span>۱۰ تیر ۱۴۰۵</span>
                             <span>۶ دقیقه</span>
                         </div>
-                        <h3>مدیریت زمان: کلید موفقیت در کنکور</h3>
-                        <a href="#" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.875rem;">ادامه مطلب</a>
+                        <h3 class="blog-title">مدیریت زمان: کلید موفقیت در کنکور</h3>
+                        <p class="blog-excerpt">استراتژی‌های عملی برای مدیریت بهینه زمان در دوران آمادگی کنکور...</p>
+                        <a href="#" class="blog-link">ادامه مطلب <span>←</span></a>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
-
+    
     <!-- FAQ Section -->
-    <section class="section" id="faq" style="background: var(--light-bg);">
+    <section class="section faq" id="faq">
         <div class="container">
-            <div class="section-header">
-                <h2>سوالات متداول</h2>
-            </div>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>هزینه مشاوره چقدر است؟</span>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>هزینه مشاوره بر اساس نوع خدمات و مدت زمان همکاری متفاوت است. ما پکیج‌های مختلفی داریم. برای اطلاع از قیمت‌ها، با ما تماس بگیرید تا مشاوره رایگان اولیه انجام شود.</p>
-                        </div>
+            <div class="faq-grid">
+                <div class="reveal">
+                    <div class="section-header">
+                        <div class="section-eyebrow">سوالات متداول</div>
+                        <h2 class="section-title">پاسخ به <span class="italic">سوالات</span> شما</h2>
+                        <p class="section-description">
+                            پاسخ به رایج‌ترین سوالات درباره خدمات ما. اگر سوال دیگری دارید، با ما تماس بگیرید.
+                        </p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>جلسات مشاوره به چه صورت برگزار می‌شود؟</span>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>جلسات می‌تواند به صورت حضوری، آنلاین، یا تلفنی برگزار شود. شما می‌توانید روشی را انتخاب کنید که برایتان راحت‌تر است.</p>
+                <div class="faq-list reveal">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-question-text">هزینه مشاوره چقدر است؟</span>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                هزینه مشاوره بر اساس نوع خدمات و مدت زمان همکاری متفاوت است. ما پکیج‌های مختلفی داریم که از مشاوره تک‌جلسه‌ای تا همراهی یک‌ساله را شامل می‌شود. برای اطلاع از قیمت‌ها، با ما تماس بگیرید تا مشاوره رایگان اولیه انجام شود.
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>آیا برای همه پایه‌های تحصیلی مشاوره دارید؟</span>
-                        <div class="faq-icon">+</div>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>بله، ما برای تمامی پایه‌ها از هفتم تا کنکور و حتی دانشگاه خدمات ارائه می‌دهیم.</p>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-question-text">جلسات مشاوره به چه صورت برگزار می‌شود؟</span>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                جلسات می‌تواند به صورت حضوری در دفتر ما، آنلاین از طریق پلتفرم‌های ویدئو کنفرانس، یا تلفنی برگزار شود. شما می‌توانید روشی را انتخاب کنید که برای شما راحت‌تر است.
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>چقدر طول می‌کشد تا نتیجه ببینیم؟</span>
-                        <div class="faq-icon">+</div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-question-text">آیا برای همه پایه‌های تحصیلی مشاوره دارید؟</span>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                بله، ما برای تمامی پایه‌های تحصیلی از دوره متوسطه اول تا کنکور و حتی دانشگاه خدمات ارائه می‌دهیم. تیم ما شامل متخصصین مختلف برای هر پایه و رشته تحصیلی است.
+                            </div>
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            <p>معمولاً از هفته‌های اول تغییرات مثبت را مشاهده خواهید کرد. برای نتایج پایدار، ۲ تا ۳ ماه همکاری منظم نیاز است.</p>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-question-text">چقدر طول می‌کشد تا نتیجه ببینیم؟</span>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                بسته به وضعیت فعلی و اهداف شما، معمولاً از هفته‌های اول تغییرات مثبت را مشاهده خواهید کرد. برای نتایج پایدار و اساسی، معمولاً ۲ تا ۳ ماه همکاری منظم نیاز است.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span class="faq-question-text">آیا امکان تغییر مشاور وجود دارد؟</span>
+                            <div class="faq-icon"></div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                بله، اگر به هر دلیلی احساس کردید که مشاور فعلی با نیازهای شما هماهنگ نیست، می‌توانید درخواست تغییر مشاور دهید. رضایت شما برای ما اولویت اول است.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
+    <section class="section contact" id="contact">
         <div class="container">
-            <div class="section-header">
-                <h2>دریافت مشاوره رایگان</h2>
+            <div class="section-header center reveal">
+                <div class="section-eyebrow">تماس با ما</div>
+                <h2 class="section-title">شروع <span class="italic">همکاری</span></h2>
+                <p class="section-description">
+                    فرم زیر را پر کنید تا کارشناسان ما در اسرع وقت با شما تماس بگیرند
+                </p>
             </div>
-            <form class="contact-form" id="contactForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">نام و نام خانوادگی *</label>
-                        <input type="text" id="name" name="name" required placeholder="نام کامل خود را وارد کنید">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">شماره تماس *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="۰۹۱۲۳۴۵۶۷۸۹">
-                    </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3 class="contact-info-title">اطلاعات تماس</h3>
+                    <p class="contact-info-text">
+                        برای دریافت مشاوره رایگان و شروع مسیر موفقیت، با ما در تماس باشید.
+                    </p>
+                    <ul class="contact-details">
+                        <li class="contact-detail">
+                            <div class="contact-detail-icon">✆</div>
+                            <div>
+                                <div class="contact-detail-label">تلفن</div>
+                                <div class="contact-detail-value">۰۲۱-۱۲۳۴۵۶۷۸</div>
+                            </div>
+                        </li>
+                        <li class="contact-detail">
+                            <div class="contact-detail-icon">✉</div>
+                            <div>
+                                <div class="contact-detail-label">ایمیل</div>
+                                <div class="contact-detail-value">info@prestige-academy.com</div>
+                            </div>
+                        </li>
+                        <li class="contact-detail">
+                            <div class="contact-detail-icon">⌖</div>
+                            <div>
+                                <div class="contact-detail-label">آدرس</div>
+                                <div class="contact-detail-value">تهران، خیابان ولیعصر</div>
+                            </div>
+                        </li>
+                        <li class="contact-detail">
+                            <div class="contact-detail-icon">◷</div>
+                            <div>
+                                <div class="contact-detail-label">ساعات کاری</div>
+                                <div class="contact-detail-value">شنبه تا پنجشنبه - ۹ تا ۲۱</div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="grade">پایه تحصیلی</label>
-                        <select id="grade" name="grade">
-                            <option value="">انتخاب کنید</option>
-                            <option value="7">پایه هفتم</option>
-                            <option value="8">پایه هشتم</option>
-                            <option value="9">پایه نهم</option>
-                            <option value="10">پایه دهم</option>
-                            <option value="11">پایه یازدهم</option>
-                            <option value="12">پایه دوازدهم</option>
-                            <option value="konkur">پشت کنکوری</option>
-                        </select>
+                <form class="contact-form reveal" id="contactForm">
+                    <h3 class="form-title">درخواست مشاوره</h3>
+                    <p class="form-subtitle">فرم زیر را تکمیل کنید تا با شما تماس بگیریم</p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="name">نام کامل</label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">شماره تماس</label>
+                            <input type="tel" id="phone" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="grade">پایه تحصیلی</label>
+                            <select id="grade" class="form-select">
+                                <option value="">انتخاب کنید</option>
+                                <option value="7">پایه هفتم</option>
+                                <option value="8">پایه هشتم</option>
+                                <option value="9">پایه نهم</option>
+                                <option value="10">پایه دهم</option>
+                                <option value="11">پایه یازدهم</option>
+                                <option value="12">پایه دوازدهم</option>
+                                <option value="konkur">پشت کنکوری</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="field">رشته تحصیلی</label>
+                            <select id="field" class="form-select">
+                                <option value="">انتخاب کنید</option>
+                                <option value="riazi">ریاضی</option>
+                                <option value="tajrobi">تجربی</option>
+                                <option value="ensani">انسانی</option>
+                                <option value="honar">هنر</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="field">رشته تحصیلی</label>
-                        <select id="field" name="field">
-                            <option value="">انتخاب کنید</option>
-                            <option value="riazi">ریاضی</option>
-                            <option value="tajrobi">تجربی</option>
-                            <option value="ensani">انسانی</option>
-                            <option value="honar">هنر</option>
-                            <option value="zaban">زبان</option>
-                        </select>
+                        <label class="form-label" for="message">توضیحات</label>
+                        <textarea id="message" class="form-textarea"></textarea>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="message">توضیحات</label>
-                    <textarea id="message" name="message" placeholder="اگر سوال یا توضیح خاصی دارید..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">ارسال درخواست مشاوره</button>
-            </form>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <span>ارسال درخواست</span>
+                        <span class="btn-arrow">←</span>
+                    </button>
+                </form>
+            </div>
         </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>همین امروز شروع کنید!</h2>
-            <p>برای دریافت مشاوره رایگان و شروع مسیر موفقیت، فرم بالا را پر کنید یا با ما تماس بگیرید</p>
-            <a href="tel:09121234567" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 3rem;">📞 تماس فوری</a>
-        </div>
-    </section>
-
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>درباره ما</h3>
-                    <p>با بیش از ۱۰ سال تجربه درخشان در مشاوره تحصیلی و برنامه‌ریزی کنکور، همراه شما در مسیر موفقیت.</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-mark">P</div>
+                        <span>PRESTIGE</span>
+                    </div>
+                    <p class="footer-text">
+                        تجربه‌ای متفاوت از مشاوره تحصیلی پریمیوم. همراه شما در مسیر موفقیت با بیش از یک دهه تجربه و هزاران دانش‌آموز موفق.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">IG</a>
+                        <a href="#" class="social-link">TG</a>
+                        <a href="#" class="social-link">WA</a>
+                        <a href="#" class="social-link">YT</a>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>دسترسی سریع</h3>
-                    <a href="#home">صفحه اصلی</a>
-                    <a href="#services">خدمات</a>
-                    <a href="#challenge">چالش رایگان</a>
-                    <a href="#blog">مقالات</a>
-                    <a href="#contact">تماس با ما</a>
+                <div>
+                    <h4 class="footer-title">دسترسی سریع</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">خانه</a></li>
+                        <li><a href="#services">خدمات</a></li>
+                        <li><a href="#philosophy">درباره ما</a></li>
+                        <li><a href="#blog">مقالات</a></li>
+                        <li><a href="#contact">تماس</a></li>
+                    </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>خدمات</h3>
-                    <a href="#">برنامه‌ریزی تحصیلی</a>
-                    <a href="#">مشاوره کنکور</a>
-                    <a href="#">انتخاب رشته</a>
-                    <a href="#">پشتیبانی ۲۴/۷</a>
+                <div>
+                    <h4 class="footer-title">خدمات</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">برنامه‌ریزی تحصیلی</a></li>
+                        <li><a href="#">مشاوره کنکور</a></li>
+                        <li><a href="#">انتخاب رشته</a></li>
+                        <li><a href="#">پشتیبانی ۲۴/۷</a></li>
+                        <li><a href="#">تحلیل کارنامه</a></li>
+                    </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>تماس با ما</h3>
-                    <p>📞 ۲۱-۱۲۳۴۵۶۷۸</p>
-                    <p>📱 ۰۹۱۲-۱۲۳-۴۵۶۷</p>
-                    <p>✉️ info@example.com</p>
-                    <p>📍 تهران</p>
+                <div>
+                    <h4 class="footer-title">تماس</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:02112345678">۰۲۱-۱۲۳۴۵۶۷۸</a></li>
+                        <li><a href="mailto:info@prestige.com">info@prestige.com</a></li>
+                        <li><a href="#">تهران، ولیعصر</a></li>
+                        <li><a href="#">شنبه تا پنجشنبه</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; ۱۴۰۵ مشاوره تحصیلی. تمامی حقوق محفوظ است.</p>
+                <div>© ۱۴۰۵ آکادمی پرستیژ. تمامی حقوق محفوظ است.</div>
+                <div>طراحی شده با ♥ برای موفقیت شما</div>
             </div>
         </div>
     </footer>
-
+    
     <!-- Sticky Mobile CTA -->
     <div class="sticky-cta">
-        <a href="#contact" class="btn btn-primary">دریافت مشاوره رایگان</a>
+        <a href="#contact" class="btn btn-primary">
+            <span>رزرو مشاوره رایگان</span>
+        </a>
     </div>
-
+    
     <script>
-        // Countdown Timer
-        function updateCountdown() {
-            const konkoorDate = new Date('2026-07-10T08:00:00');
-            const now = new Date();
-            const diff = konkoorDate - now;
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
+        // Preloader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 2000);
+        });
+        
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursorFollower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+        
+        document.querySelectorAll('a, button, .service-card, .blog-card, .testimonial-card, .faq-question').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorFollower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorFollower.classList.remove('hover');
+            });
+        });
+        
+        // Navigation Scroll
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+        
         // Mobile Menu
         const mobileToggle = document.getElementById('mobileToggle');
         const navMenu = document.getElementById('navMenu');
         
         mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
-
+        
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
                 navMenu.classList.remove('active');
             });
         });
-
+        
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
                 const item = question.parentElement;
                 const isActive = item.classList.contains('active');
+                
                 document.querySelectorAll('.faq-item').forEach(faq => {
                     faq.classList.remove('active');
                 });
+                
                 if (!isActive) {
                     item.classList.add('active');
                 }
             });
         });
-
-        // Smooth Scrolling
+        
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const headerOffset = 120;
+                    const headerOffset = 100;
                     const elementPosition = target.getBoundingClientRect().top;
                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
-
+        
+        // Scroll Reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Counter Animation
+        const animateCounter = (element, target, duration = 2000) => {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const updateCounter = () => {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start).toLocaleString('fa-IR');
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString('fa-IR');
+                }
+            };
+            updateCounter();
+        };
+        
         // Form Submission
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             alert('درخواست شما با موفقیت ارسال شد! به زودی با شما تماس خواهیم گرفت.');
             e.target.reset();
         });
-
-        // Active Navigation
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section[id]');
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
+        
+        // Parallax Effect for Hero Cards
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.hero-card');
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            
+            cards.forEach((card, index) => {
+                const speed = (index + 1) * 0.5;
+                card.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
             });
         });
     </script>
